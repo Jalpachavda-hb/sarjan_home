@@ -17,7 +17,7 @@ const slides = [
     id: 2,
     title: "Sarjan Era",
     subtitle: "A lifestyle space designed for new-age living.",
-     bulletPoints: [
+    bulletPoints: [
       "Smart home features with modern interiors",
       "Well-connected to major transit points ",
       "Green spaces and recreational areas",
@@ -28,7 +28,7 @@ const slides = [
     id: 3,
     title: "Sarjan Heights",
     subtitle: "Your dream lifestyle, thoughtfully crafted.",
-     bulletPoints: [
+    bulletPoints: [
       "Smart home features with modern interiors",
       "Well-connected to major transit points ",
       "Green spaces and recreational areas",
@@ -75,7 +75,7 @@ export default function Projects() {
             backgroundImage: `url(${slide.image})`,
             backgroundSize: "cover",
             objectFit: "cover",
-            backgroundRepeat: "no-repeat",                     
+            backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             transition: "opacity 1s ease-in-out",
           }}
@@ -90,11 +90,17 @@ export default function Projects() {
                 }`}
               >
                 <div className="slidertextcolor p-5 bg-black bg-opacity-50 rounded-4 shadow-lg">
-                  <h1 className="display-4 fw-bold slidertextcolor">{slide.title}</h1>
+                  
+                  <h1 className="display-4 fw-bold slidertextcolor">
+                    {slide.title}
+                  </h1>
                   <h4 className="mt-3  slidertextcolor">{slide.subtitle}</h4>
                   {Array.isArray(slide.bulletPoints) &&
                     slide.bulletPoints.map((point, i) => (
-                      <p key={i} className="lead mt-2 d-flex align-items-start slidertextcolor">
+                      <p
+                        key={i}
+                        className="lead mt-2 d-flex align-items-start slidertextcolor"
+                      >
                         <i className="bi bi-dot text-warning fs-4 me-2 mt-1"></i>
                         {point}
                       </p>
@@ -113,13 +119,13 @@ export default function Projects() {
 
       {/* Arrows */}
       <button
-        className="btn btn-light position-absolute top-50 start-0 sliderbtn translate-middle-y ms-3 z-3 rounded-circle p-3"
+        className="btn btn-light position-absolute top-50 start-0 sliderbtn translate-middle-y ms-3 z-3  p-3"style={{borderRadius: "27%"}}
         onClick={prevSlide}
       >
         <i className="bi bi-chevron-left fs-4"></i>
       </button>
       <button
-        className="btn btn-light position-absolute top-50 end-0 sliderbtn translate-middle-y me-3 z-3 rounded-circle p-3"
+        className="btn btn-light position-absolute top-50 end-0 sliderbtn translate-middle-y me-3 z-3 p-3" style={{borderRadius: "27%"}}
         onClick={nextSlide}
       >
         <i className="bi bi-chevron-right fs-4"></i>

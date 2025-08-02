@@ -12,12 +12,7 @@ const Benifitsection = () => {
     <div className="container-fluid" id="achivement">
       <div className="container">
         <div className="sec-skill">
-          <span className="container section-title d-block mb-4 mt-5">
-            Why Choose Sarjan Homes
-          </span>
-          <p className="para container">
-            Experience Comfort, Class, and Convenience — All in One Place
-          </p>
+          
         </div>
       </div>
 

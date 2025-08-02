@@ -143,7 +143,6 @@ const Home = () => {
               ></div>
               <div className="container">
                 <div className="row align-items-center">
-              
                   <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
                     <div className="banner__slide-content text-start">
                       <span className="subtitle__one" data-aos="fade-right">
@@ -164,7 +163,7 @@ const Home = () => {
                       </a>
                     </div>
                   </div>
-               
+
                   <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
                     <img
                       src={require("../../assets/img/squer.png")}
@@ -191,7 +190,7 @@ const Home = () => {
                   <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
                     <div className="banner__slide-content text-start">
                       <span className="subtitle__one" data-aos="fade-right">
-                       Find Your Dream Home
+                        Find Your Dream Home
                       </span>
                       <p data-aos="fade-left " className="para1">
                         Welcome to Sarjan Homes — your trusted partner in
@@ -224,19 +223,29 @@ const Home = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+      <div className="container ">
+        <span className="section-title d-block mb-4 container">About Us</span>
+        <p className="para mb-5">Dream Living Space Setting New Standards</p>
+      </div>
 
       <AboutHome />
+
       <ThreeSteps />
       <Projects />
+      <div className="container ">
+        <span className="section-title d-block mb-4 container">
+          {" "}
+          Why Choose Sarjan Homes
+        </span>
+        <p className="para mb-5">
+          {" "}
+          Experience Comfort, Class, and Convenience — All in One Place
+        </p>
+      </div>
       <Benifitsection />
       <VideoSection />
       <Testimonial />
       <Footer />
-   
-  
-
-
-
     </>
   );
 };

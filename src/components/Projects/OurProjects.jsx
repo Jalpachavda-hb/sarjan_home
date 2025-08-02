@@ -112,7 +112,7 @@ const OurProjects = () => {
             <li data-filter="*" className="filter-active">
               All
             </li>
-            <li data-filter=".Ongoing-Project">Ongoing Project</li>
+            <li data-filter=".Ongoing-Project">Ong  oing Project</li>
             <li data-filter=".Completed-Project">Completed Project</li>
           </ul>
 
@@ -124,7 +124,9 @@ const OurProjects = () => {
               >
                 <img src={item.image} className="img-fluid" alt={item.title} />
                 <div className="portfolio-info">
-                  <h4>{item.title}</h4>
+                   <Link
+                    to="/Projectdetails" className="text-decoration-none text-white">
+                  <h4>{item.title}</h4></Link>
                   <p>{item.contain}</p>
                   <a
                     href={item.image}

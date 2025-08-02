@@ -12,13 +12,13 @@ const testimonials = [
     img: profile1,
     text: `"Dream Home Delivered!".Sarajan Homes turned our vision into a reality. From the first consultation to the final handover, their team was professional, transparent, and incredibly supportive. "`,
   },
-    {
+  {
     name: "Kelian Anderson",
     role: "SELLING AGENTS",
     img: profile1,
     text: `"Truly Hassle-Free Experience,"Working with Sarajan Homes was a breeze. They handled all permits, deadlines, and designs with precision. We felt informed and cared for every step of the way. It’s rare to find builders who genuinely listen — and deliver."`,
   },
-    {
+  {
     name: "Kelian Anderson",
     role: "SELLING AGENTS",
     img: profile1,
@@ -53,11 +53,14 @@ const Testimonial = () => {
 
   return (
     <>
-     <span className="container section-title d-block mb-4 mt-5">Our Testimonial</span>
-        <p className="para container mb-5">Dream Living Space Setting New Standards</p>
+      <span className="container section-title d-block mb-4 mt-5">
+        Our Testimonial
+      </span>
+      <p className="para container mb-5">
+        Dream Living Space Setting New Standards
+      </p>
 
       <div className="testimonial-wrapper mb-5">
-       
         <div className="testimonial-carousel">
           <button className="arrow left" onClick={() => scrollSlider("left")}>
             <FaArrowLeft />

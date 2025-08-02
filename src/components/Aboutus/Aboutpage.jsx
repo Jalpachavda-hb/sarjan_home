@@ -10,15 +10,12 @@ import "aos/dist/aos.css";
 import "../Home/Hero.css";
 import "./Aboutuspage.css";
 import logo from "../../assets/img/logo-2.png";
-
 import ThreeSteps from "../Home/WhyChoose";
 import Aboutsection from "../Aboutus/Aboutsection";
-
-import ServicesSection from './services';
+import ServicesSection from "./services";
 import Footer from "../Home/Footer";
 import Testimonial from "../Home/Testimonial";
 import { Link } from "react-router-dom";
-
 
 const Aboutpage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,51 +41,80 @@ const Aboutpage = () => {
     <>
       {/* Navbar */}
       <header className="header__sticky one">
-  <div className="header__area">
-    <div className="container custom__container">
-      <div className="header__area-menubar d-flex justify-content-between align-items-center">
+        <div className="header__area">
+          <div className="container custom__container">
+            <div className="header__area-menubar d-flex justify-content-between align-items-center">
+              {/* Logo */}
+              <div className="header__area-menubar-left">
+                <div className="header__area-menubar-left-logo">
+                  <Link to="/">
+                    <img src={logo} alt="Logo" />
+                  </Link>
+                </div>
+              </div>
 
-        {/* Logo */}
-        <div className="header__area-menubar-left">
-          <div className="header__area-menubar-left-logo">
-            <Link to="/">
-              <img src={logo} alt="Logo" />
-            </Link>
+              {/* Desktop Menu */}
+              <div className="header__area-menubar-right-menu d-none d-lg-block">
+                <ul
+                  className="mainmenu d-flex align-items-center"
+                  id="mobilemenu"
+                >
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">About Us</Link>
+                  </li>
+                  <li>
+                    <Link to="/Property">Our Projects</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact">Contact</Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Mobile Menu Toggle */}
+              <div
+                className="menu-toggle d-lg-none"
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Desktop Menu */}
-        <div className="header__area-menubar-right-menu d-none d-lg-block">
-          <ul className="mainmenu d-flex align-items-center" id="mobilemenu">
-            <li><Link to="/">Home</Link></li> 
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/Property">Our Projects</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
+          {/* Mobile Menu */}
+          {menuOpen && (
+            <div className="menu-responsive-mobile d-lg-none">
+              <ul>
+                <li>
+                  <Link to="/" onClick={() => setMenuOpen(false)}>
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" onClick={() => setMenuOpen(false)}>
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Property" onClick={() => setMenuOpen(false)}>
+                    Our Projects
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" onClick={() => setMenuOpen(false)}>
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="menu-toggle d-lg-none" onClick={() => setMenuOpen(!menuOpen)}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
-
-    {/* Mobile Menu */}
-    {menuOpen && (
-      <div className="menu-responsive-mobile d-lg-none">
-        <ul>
-          <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-          <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
-          <li><Link to="/Property" onClick={() => setMenuOpen(false)}>Our Projects</Link></li>
-          <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
-        </ul>
-      </div>
-    )}
-  </div>
-</header>
+      </header>
       {/* Banner Area */}
       <div className="home__banner">
         <Swiper
@@ -136,11 +162,15 @@ const Aboutpage = () => {
       </span>
       <p className="para container">Why Choose Sarjan Homes</p>
       <ThreeSteps />
-         <span className="container section-title d-block mb-4 mt-5 ">
-   Our services
-      </span>
-      <p className="para container mb-5">What we Provide</p>
-      <ServicesSection /> 
+
+      <div className="container" style={{ marginBottom: "180px" }}>
+        <span className="section-title d-block mb-4 container">
+          
+          Our services
+        </span>
+        <p className="para mb-5">What we Provide</p>
+      </div>
+      <ServicesSection />
       <Testimonial />
       <Footer />
     </>

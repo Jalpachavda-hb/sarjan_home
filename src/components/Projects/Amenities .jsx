@@ -18,7 +18,7 @@ const Amenities = () => {
        
         <div className="amenities-grid">
           {amenities.map((item, index) => (
-            <div className="amenity-card" key={index}>
+            <div className="amenity-card " key={index}>
               <FaCheckCircle className="icon" />
               <p  className="para">{item}</p>
             </div>
