@@ -143,7 +143,7 @@ const Home = () => {
               ></div>
               <div className="container">
                 <div className="row align-items-center">
-                  {/* Left: Text */}
+              
                   <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
                     <div className="banner__slide-content text-start">
                       <span className="subtitle__one" data-aos="fade-right">
@@ -164,7 +164,7 @@ const Home = () => {
                       </a>
                     </div>
                   </div>
-                  {/* Right: Image */}
+               
                   <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
                     <img
                       src={require("../../assets/img/squer.png")}
@@ -177,6 +177,7 @@ const Home = () => {
               </div>
             </div>
           </SwiperSlide>
+
           {/* Slide 2 */}
           <SwiperSlide>
             <div className="banner__slide-area swiper-slide">
@@ -231,6 +232,11 @@ const Home = () => {
       <VideoSection />
       <Testimonial />
       <Footer />
+   
+  
+
+
+
     </>
   );
 };

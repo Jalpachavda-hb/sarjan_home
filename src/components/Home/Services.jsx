@@ -38,7 +38,6 @@ const Services = () => {
             </div>
           </div>
 
-          {/* Card 2 */}
           <div className="col-lg-4 col-sm-6 col-12">
             <div className="ltn__feature-item ltn__feature-item-6 text-center bg-white box-shadow-1 active">
               <div className="ltn__feature-icon">
