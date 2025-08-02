@@ -1,0 +1,468 @@
+/* Portfolio Filter Buttons */
+.portfolio .portfolio-filters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  border-radius: 3px;
+  border: 2px solid #b38711;
+  color: #b38711;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio .portfolio-filters li.filter-active,
+.portfolio .portfolio-filters li:hover {
+  color: #fff;
+  background-color: #b38711;
+}
+
+/* Responsive font for filters */
+@media (max-width: 576px) {
+  .portfolio .portfolio-filters li {
+    font-size: 14px;
+    padding: 8px 16px;
+    font-family: poppins;
+  }
+}
+
+/* Portfolio Item Layout */
+/* Portfolio Card Styles */
+.portfolio .portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.portfolio .portfolio-item:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio .portfolio-item img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.portfolio .portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Info Hidden by Default */
+.portfolio .portfolio-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Show on Hover */
+.portfolio .portfolio-item:hover .portfolio-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Title and Description */
+.portfolio .portfolio-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: poppins;
+  margin-bottom: 5px;
+}
+
+.portfolio .portfolio-info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-family: poppins;
+  color: #eee;
+}
+
+/* Icons */
+.portfolio .portfolio-info .preview-link,
+.portfolio .portfolio-info .details-link {
+  font-size: 20px;
+  font-family: poppins;
+  margin-right: 10px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.portfolio .portfolio-info .preview-link:hover,
+.portfolio .portfolio-info .details-link:hover {
+  color: #b38711;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio .portfolio-item img {
+    height: 200px;
+  }
+  .portfolio .portfolio-info h4 {
+    font-size: 16px;
+    font-family: poppins;
+  }
+  .portfolio .portfolio-info p {
+    font-size: 13px;
+    font-family: poppins;
+  }
+}
+button.gclose.gbtn {
+  height: 4rem;
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details Section
+--------------------------------------------------------------*/
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.portfolio-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+.portfolio-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+.portfolio-details .portfolio-info {
+  background-color: var(--surface-color);
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: poppins;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.portfolio-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+  font-family: poppins;
+}
+
+.portfolio-details .portfolio-info ul li + li {
+  margin-top: 10px;
+}
+
+.portfolio-details .portfolio-description {
+  padding-top: 30px;
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: poppins;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+.projectname {
+  color: #b38711;
+}
+.projectdetailspara {
+  font-family: poppins;
+  font-size: 11px;
+  position: relative;
+}
+
+.text-decoration-none:hover {
+  text-decoration: underline !important;
+}
+
+.col-12.text-center {
+  position: relative;
+}
+
+/* =======specification=========== */
+
+.text-gold {
+  color: #b38711;
+  font-size: 18px;
+  font-family: poppins;
+}
+
+.spec-card {
+  box-shadow: #eee;
+  background-color: rgb(248, 241, 228);
+  border-left: 5px solid #b38711;
+  transition: transform 0.3s ease;
+}
+
+.spec-card:hover {
+  transform: translateY(-5px);
+}
+
+.section-title h2 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.section-title p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/*--------------------------------------------------------------
+# Amenities 
+--------------------------------------------------------------*/
+.amenities-section {
+  padding: 60px 0;
+  background: linear-gradient(to bottom right, #fffdf5, #fff8e1);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 2.4rem;
+  color: #b38711;
+  font-weight: 700;
+}
+
+.section-header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.amenity-card {
+  background-color: #ffffff;
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+.amenity-card:hover {
+  background-color: #fffef7;
+  transform: translateY(-4px);
+}
+
+.amenity-card .icon {
+  color: #b38711;
+  font-size: 1.7rem;
+  flex-shrink: 0;
+}
+
+.amenity-text {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Responsive Padding */
+@media (max-width: 768px) {
+  .amenities-section {
+    padding: 40px 20px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ================download rera============ */
+
+.documents-section {
+  font-size: 13px;
+}
+
+.document-card {
+  transition: transform 0.3s ease;
+}
+.object-fit-cover {
+  object-fit: cover !important;
+}
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.doc-img-wrapper {
+  height: 200px;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.small-badge {
+  font-size: 11px;
+  padding: 5px 8px;
+  border-radius: 6px;
+}
+
+.doc-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #b38711;
+}
+
+.doc-desc {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #b38711, #d4a632);
+  border: none;
+  font-size: 14px;
+  font-family: poppins;
+}
+
+.download-btn:hover {
+  background-color: #a2760f;
+}
+
+.info-box {
+  border-color: #f7dca0;
+}
+
+.info-title {
+  font-size: 16px;
+  color: #b38711;
+}
+
+.info-desc {
+  font-size: 13px;
+}
+
+.doc-img-wrapper {
+  height: 200px;
+  border-radius: 0.5rem 0.5rem 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive adjustment */
+@media (max-width: 576px) {
+  .doc-img-wrapper {
+    height: 180px;
+  }
+
+  .doc-title {
+    font-size: 14px;
+  }
+
+  .doc-desc {
+    font-size: 12px;
+  }
+
+  .download-btn {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}
+
+.infocard {
+  background: linear-gradient(135deg, #f8fafc, #e0e7ff) !important;
+}
+
+.info-box {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.info-icon-circle {
+  width: 48px;
+  height: 48px;
+  background-color: #fff3cd;
+}
+.ri-information-line {
+  font-size: 46px !important;
+}
+
+
+.btnsite {
+  /* background-color: #b38711 !important; */
+  border-color: #a2760f !important;
+  color: #a2760f !important;
+   font-size: 1.3rem !important;
+}
+.btnsite:hover {
+  background-color: #b38711 !important;
+    color: #ffffff !important;
+}
+
+
+.btncall {
+  background-color: #b38711 !important;
+  color: #fff !important;
+  font-size: 1.3rem !important;
+}
+
+.btncall:hover {
+  background-color: #ffffff !important;
+  border-color: #b38711 !important;
+  color: #b38711 !important;
+}
+
+.download-btn{
+  font-size: 1.5rem !important;
+  font-family: poppins;
+}
+.iconhelp{
+  color: #b38711 !important;
+}
