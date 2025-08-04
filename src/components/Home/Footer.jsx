@@ -22,7 +22,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="col-md-5 footer-contact">
+          <div className="col-md-5 footer-contact para">
             <div className="footer-info-item d-flex align-items-start mb-2">
               <FaMapMarkerAlt className="footer-icon me-2 mt-1" />
               <span>
@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
 
           {/* Social Icons */}
-          <div className="col-md-3 text-center text-md-end mt-4 mt-md-0">
+          <div className="col-md-3 text-center text-md-end mt-4 mt-md-0 " >
             <div className="footer-socials d-flex justify-content-center justify-content-md-end gap-3">
               <a href="/" className="footer-social-link" aria-label="Facebook">
                 <FaFacebookF />
@@ -56,7 +56,7 @@ const Footer = () => {
           </div>
         </div>     
         <div className="row mt-4">
-          <div className="col text-center footer-bottom small">
+          <div className="col text-center footer-bottom small para parafooter  ">
             © {new Date().getFullYear()} Copyright Sarjan Homes. All rights
             reserved. Designed & Developed by Fairytale Software.
           </div>
