@@ -52,8 +52,8 @@ const Testimonial = () => {
   };
 
   return (
-    <>
-      <span className="container section-title d-block mb-4 mt-5">
+    <div className="testimonial-section">
+      <span className="container section-title d-block mb-4 mt-5 ">
         Our Testimonial
       </span>
       <p className="para container mb-5">
@@ -87,7 +87,7 @@ const Testimonial = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

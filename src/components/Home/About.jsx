@@ -29,7 +29,7 @@ const AboutHome = () => {
 
             <div className="d-flex gap-4 flex-wrap">
               <div>
-                <h3 className="fw-bold counts">8K+</h3>
+                <h3 className="fw-bold counts ">8K+</h3>
                 <p className="countstext m-0">Houses Available</p>
               </div>
               <div>

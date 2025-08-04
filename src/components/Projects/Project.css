@@ -212,7 +212,18 @@ button.gclose.gbtn {
   font-size: 11px;
   position: relative;
 }
-
+.projectdetailparatitle{
+      font-size: 22px;
+    font-weight: 700;
+    color: #b38711;    
+    font-family: poppins;
+    margin-top: 100px !important;
+    margin-bottom: 0px !important;
+}
+.detailscontainer{
+  margin-bottom: -50px ;
+  margin-top: 10px;
+}
 .text-decoration-none:hover {
   text-decoration: underline !important;
 }
@@ -466,3 +477,6 @@ button.gclose.gbtn {
 .iconhelp{
   color: #b38711 !important;
 }
+
+
+

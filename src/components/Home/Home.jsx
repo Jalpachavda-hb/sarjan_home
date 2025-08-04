@@ -43,9 +43,9 @@ const Home = () => {
     <>
       {/* Navbar */}
 
-      <header className="header__sticky one">
-        <div className="header__area">
-          <div className="container custom__container">
+      <header className="header__sticky one ">
+        <div className="header__area  ">
+          <div className="container  ">
             <div className="header__area-menubar d-flex justify-content-between align-items-center">
               {/* Logo */}
               <div className="header__area-menubar-left">

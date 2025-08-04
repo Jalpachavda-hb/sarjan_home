@@ -49,7 +49,7 @@ const Property = () => {
       {/* Navbar */}
       <header className="header__sticky one">
         <div className="header__area">
-          <div className="container custom__container">
+          <div className="container ">
             <div className="header__area-menubar d-flex justify-content-between align-items-center">
               {/* Logo */}
               <div className="header__area-menubar-left">
@@ -162,12 +162,21 @@ const Property = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <span className="container section-title d-block mb-4 mt-5">
-        Project Details
-      </span>
-      <p className="para container mb-5 ">
-        Discover a place you'll love to live.
-      </p>
+      <div className="detailscontainer">
+        <h2 className=" container  mb-4 mt-5 projectdetailparatitle ">
+          Built with Vision, Designed for Life
+        </h2>
+        <p className="para container mb-0 ">
+          At Sarjan Homes, we don’t just build structures — we create spaces
+          where families grow, dreams take shape, and life feels truly at home.
+          Our buildings are crafted with a thoughtful blend of modern
+          architecture, premium materials, and sustainable practices. Every
+          detail, from the layout to the finish, reflects our commitment to
+          quality, comfort, and long-term value. With a focus on safety,
+          functionality, and elegant design, Sarjan Homes is more than a
+          residence — it’s a lifestyle built to last.
+        </p>
+      </div>
       <section id="portfolio-details" className="portfolio-details section">
         <div className="container section-title" data-aos="fade-up"></div>
 
@@ -254,22 +263,8 @@ const Property = () => {
                 className="portfolio-description"
                 data-aos="fade-up"
                 data-aos-delay="300"
-              >
-                <h2 className="projectname">
-                  Built with Vision, Designed for Life
-                </h2>
-                <p className="projectdetailspara">
-                  At Sarjan Homes, we don’t just build structures — we create
-                  spaces where families grow, dreams take shape, and life feels
-                  truly at home. Our buildings are crafted with a thoughtful
-                  blend of modern architecture, premium materials, and
-                  sustainable practices. Every detail, from the layout to the
-                  finish, reflects our commitment to quality, comfort, and
-                  long-term value. With a focus on safety, functionality, and
-                  elegant design, Sarjan Homes is more than a residence — it’s a
-                  lifestyle built to last.
-                </p>
-              </div>
+                //  style={{ maxHeight: "200px", overflowY: "auto" }}
+              ></div>
             </div>
           </div>
         </div>

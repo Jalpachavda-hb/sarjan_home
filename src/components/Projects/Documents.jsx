@@ -96,11 +96,11 @@ const Documents = () => {
                   <IoIosHelpCircleOutline className="ri-information-line iconhelp " />
                 </div>
               </div>
-              <h3 className="h5 h4-sm fw-semibold text-dark mb-3">
+              <h3 className="  mb-3 para text-dark text-bold fs-3">
                 Need Additional Information?
               </h3>
               <p
-                className="text-secondary small mb-3 mb-sm-4 mx-auto"
+                className="text-secondary small mb-3 mb-sm-4 mx-auto para"
                 style={{ maxWidth: "650px" }}
               >
                 Our sales team is available to provide personalized project
@@ -108,10 +108,10 @@ const Documents = () => {
                 development.
               </p>
               <div className="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3">
-                <button className="btn btncall d-flex align-items-center justify-content-center px-4 py-2  ">
+                <button className="btn btncall d-flex align-items-center para justify-content-center px-4 py-2  ">
                   <i className="ri-phone-line me-2"></i> Schedule a Call
                 </button>
-                <button className=" btnsite btn d-flex align-items-center justify-content-center px-4 py-2  fw-medium">
+                <button className=" btnsite btn d-flex align-items-center para justify-content-center px-4 py-2  fw-medium">
                   <i className="ri-calendar-line me-2"></i> Book Site Visit
                 </button>
               </div>
