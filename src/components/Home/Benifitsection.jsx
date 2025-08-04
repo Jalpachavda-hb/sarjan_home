@@ -27,7 +27,7 @@ const Benifitsection = () => {
                 <div className="d-flex align-items-center justify-content-end gap-4">
                   <div className="feature-content">
                     <h3 className="awardh3">Prime Locations</h3>
-                    <p className="awardp">
+                    <p className="awardp para">
                       All our projects are strategically located with easy
                       access to highways, schools, hospitals, and shopping hubs
                       — giving you unmatched convenience.
@@ -47,7 +47,7 @@ const Benifitsection = () => {
                 <div className="d-flex align-items-center justify-content-end gap-4">
                   <div className="feature-content">
                     <h3 className="awardh3">Modern Architecture</h3>
-                    <p className="awardp">
+                    <p className="awardp para">
                       Our homes are built with contemporary design principles,
                       offering spacious layouts, large windows for natural
                       light, and sustainable materials.
@@ -67,7 +67,7 @@ const Benifitsection = () => {
                 <div className="d-flex align-items-center justify-content-end gap-4">
                   <div className="feature-content">
                     <h3 className="awardh3">Vastu Compliant Homes</h3>
-                    <p className="awardp">
+                    <p className="awardp para">
                       Every Sarjan Home is thoughtfully planned to align with
                       Vastu principles, promoting positive energy, well-being,
                       and harmony in your space.
@@ -98,7 +98,7 @@ const Benifitsection = () => {
                   </div>
                   <div className="feature-content">
                     <h3 className="awardh3">Gated Community & Security</h3>
-                    <p className="awardp">
+                    <p className="awardp para">
                       Enjoy peace of mind with 24/7 security, CCTV surveillance,
                       gated entry points, and a safe environment for families
                       and children.
@@ -118,7 +118,7 @@ const Benifitsection = () => {
                   </div>
                   <div className="feature-content">
                     <h3 className="awardh3">Amenities That Matter</h3>
-                    <p className="awardp">
+                    <p className="awardp para">
                       From landscaped gardens to play areas, gyms, and
                       clubhouses — our projects are designed for a balanced,
                       fulfilling lifestyle.
@@ -138,7 +138,7 @@ const Benifitsection = () => {
                   </div>
                   <div className="feature-content">
                     <h3 className="awardh3">Trusted Legacy</h3>
-                    <p className="awardp">
+                    <p className="awardp para">
                       Sarjan Homes has delivered quality projects for over a
                       decade, earning trust through transparency, timely
                       delivery, and customer-first values.
