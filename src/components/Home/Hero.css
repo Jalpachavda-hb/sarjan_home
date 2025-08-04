@@ -965,7 +965,7 @@ li.menu-item-has-children {
 .counts {
   color: #b48e40;
   font-family: "Poppins", sans-serif;
-  font-size: 3.5rem ;
+  font-size: 3rem ;
 }
 
 .countstext {
@@ -1995,7 +1995,7 @@ p.awardp {
 }
 
 .abouthome {
-  background-color: #dde0e2;
+  background-color: #fff9e4;
   padding: 60px 0;
   font-family: "Poppins", sans-serif;
 }
