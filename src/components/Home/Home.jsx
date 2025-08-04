@@ -154,13 +154,13 @@ const Home = () => {
                         comfort, convenience, and community living — all in
                         prime locations.
                       </p>
-                      <a
-                        href="#about"
+                      {/* <a
+                        href="/about"
                         className="btn explore-btn mt-3"
                         data-aos="fade-up"
                       >
                         Explore More
-                      </a>
+                      </a> */}
                     </div>
                   </div>
 
@@ -199,13 +199,13 @@ const Home = () => {
                         designed residences that blend comfort, elegance, and
                         functionality.
                       </p>
-                      <a
+                      {/* <a
                         href="#about"
                         className="btn explore-btn mt-3"
                         data-aos="fade-up"
                       >
                         Explore More
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                   {/* Right: Image */}
@@ -227,7 +227,6 @@ const Home = () => {
         <span className="section-title d-block mb-4 container">About Us</span>
         <p className="para mb-5">Dream Living Space Setting New Standards</p>
       </div>
-
       <AboutHome />
 
       <ThreeSteps />

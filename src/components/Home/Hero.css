@@ -1,3 +1,41 @@
+/* ====common css ====== */
+
+.para {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: gray !important;
+  font-family: "Poppins", sans-serif !important;
+}
+.para1 {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: rgb(236, 228, 228) !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.title {
+  color: #b48e40;
+  font-family: "Poppins", sans-serif;
+  font-size: 27px;
+}
+
+.section-title {
+  color: #b48e40;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 100px !important;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
 .header__sticky.one.header__sticky-sticky-menu .header__area {
   background: var(--heading-color);
 }
@@ -71,11 +109,7 @@
     width: 100%;
     font-size: 14px !important;
   }
-  .explore-btn {
-    text-align: center;
-    display: block;
-    width: 100%;
-  }
+ 
   .banner__right-image {
     margin-top: 30px;
   }
@@ -122,7 +156,7 @@ Menu Bar
   display: inline-block;
 }
 .header__area-menubar-left-logo a img {
-  max-width: 150px;
+  max-width: 180px !important;
   position: relative;
   z-index: 999;
   padding: 5px;
@@ -1123,20 +1157,6 @@ li.menu-item-has-children {
   display: block;
 }
 
-/* Button */
-.explore-btn {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 12px 24px;
-  font-weight: 600;
-  border-radius: 6px;
-  text-transform: uppercase;
-  font-size: 14px;
-  transition: background 0.3s ease;
-}
-.explore-btn:hover {
-  background-color: #c78c35;
-}
 
 /* Right Image */
 .banner__right-image {
@@ -1247,24 +1267,6 @@ li.menu-item-has-children {
     max-width: 220px;
   }
 
-  .explore-btn {
-    font-size: 13px;
-    padding: 10px 20px;
-  }
-}
-
-.explore-btn {
-  background-color: #c5880f !important; /* Replace with your theme color */
-  border: none;
-  padding: 10px 25px;
-  font-weight: 600;
-  border-radius: 50px;
-  transition: 0.3s ease;
-  color: white !important;
-}
-
-.explore-btn:hover {
-  background-color: #dda638 !important;
 }
 
 /* ============About=========== */
@@ -1281,32 +1283,7 @@ li.menu-item-has-children {
   font-weight: 500;
 }
 
-.para {
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: gray !important;
-  font-family: "Poppins", sans-serif !important;
-}
-.para1 {
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: rgb(236, 228, 228) !important;
-  font-family: "Poppins", sans-serif !important;
-}
 
-.title {
-  color: #b48e40;
-  font-family: "Poppins", sans-serif;
-}
-
-.section-title {
-  color: #b48e40;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  margin-top: 100px !important;
-  text-decoration: underline;
-}
 
 /* ================whychosse==================== */
 
@@ -1639,14 +1616,13 @@ button:focus {
   color: white;
   transition: all 0.3s ease-in-out;
 }
-.slidertextcolor {
-  color: white !important;
-}
+
 .slidertextcolor {
   color: #fff;
   z-index: 2;
   font-family: "Poppins", sans-serif;
   position: relative;
+  font-size: 16px;
 }
 
 .sliderbtn:hover {
@@ -1778,7 +1754,8 @@ button:focus {
 }
 .projectvidiotitle {
   font-family: poppins !important;
-  font-size: 38px !important;
+  font-size: 25px !important;
+  margin-bottom: 10px !important;
 }
 .description {
   font-size: 17px !important;
@@ -1971,6 +1948,24 @@ p.awardp {
   border-radius: 32px;
   color: #b88a34;
   font-size: 24px;
+}
+/* ===benifitsection====== */
+
+@media (max-width: 991px) {
+  /* Make icons appear on the left side for the first column only */
+  .col-lg-4:first-child .feature-item .d-flex {
+    flex-direction: row !important; /* icon left, text right */
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+
+  .col-lg-4:first-child .feature-icon {
+    order: 0 !important;
+  }
+
+  .col-lg-4:first-child .feature-content {
+    order: 1;
+  }
 }
 
 .benefit-section-bg {

@@ -90,7 +90,6 @@ export default function Projects() {
                 }`}
               >
                 <div className="slidertextcolor p-5 bg-black bg-opacity-50 rounded-4 shadow-lg">
-                  
                   <h1 className="display-4 fw-bold slidertextcolor">
                     {slide.title}
                   </h1>
@@ -101,7 +100,7 @@ export default function Projects() {
                         key={i}
                         className="lead mt-2 d-flex align-items-start slidertextcolor"
                       >
-                        <i className="bi bi-dot text-warning fs-4 me-2 mt-1"></i>
+                        <i className="bi bi-dot text-warning fs-4 me-2 mt-1 bulletpoint"></i>
                         {point}
                       </p>
                     ))}
@@ -119,13 +118,15 @@ export default function Projects() {
 
       {/* Arrows */}
       <button
-        className="btn btn-light position-absolute top-50 start-0 sliderbtn translate-middle-y ms-3 z-3  p-3"style={{borderRadius: "27%"}}
+        className="btn btn-light position-absolute top-50 start-0 sliderbtn translate-middle-y ms-3 z-3  p-3"
+        style={{ borderRadius: "27%" }}
         onClick={prevSlide}
       >
         <i className="bi bi-chevron-left fs-4"></i>
       </button>
       <button
-        className="btn btn-light position-absolute top-50 end-0 sliderbtn translate-middle-y me-3 z-3 p-3" style={{borderRadius: "27%"}}
+        className="btn btn-light position-absolute top-50 end-0 sliderbtn translate-middle-y me-3 z-3 p-3"
+        style={{ borderRadius: "27%" }}
         onClick={nextSlide}
       >
         <i className="bi bi-chevron-right fs-4"></i>
@@ -133,7 +134,7 @@ export default function Projects() {
 
       {/* Slide Counter */}
       <div className="position-absolute top-0 end-0 mt-3 me-3 bg-dark bg-opacity-50 text-white px-3 py-1 rounded-pill z-3">
-        {String(currentSlide + 1).padStart(2, "0")} /{" "}
+        {String(currentSlide + 1).padStart(2, "0")} /
         {slides.length.toString().padStart(2, "0")}
       </div>
     </section>

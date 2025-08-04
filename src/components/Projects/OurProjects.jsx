@@ -14,8 +14,6 @@ import project6 from "../../assets/img/bg/Akshatparedais.jpg";
 import project7 from "../../assets/img/bg/sarjandreams.webp";
 import { Link } from "react-router-dom";
 const OurProjects = () => {
-
-
   const portfolioItems = [
     {
       id: 1,
@@ -112,39 +110,42 @@ const OurProjects = () => {
             <li data-filter="*" className="filter-active">
               All
             </li>
-            <li data-filter=".Ongoing-Project">Ong  oing Project</li>
+            <li data-filter=".Ongoing-Project">Ongoing Project</li>
             <li data-filter=".Completed-Project">Completed Project</li>
           </ul>
 
           <div className="row gy-4 isotope-container">
             {portfolioItems.map((item) => (
-              <div
-                key={item.id}
-                className={`col-lg-4 col-md-6 portfolio-item isotope-item ${item.category}`}
-              >
-                <img src={item.image} className="img-fluid" alt={item.title} />
-                <div className="portfolio-info">
-                   <Link
-                    to="/Projectdetails" className="text-decoration-none text-white">
-                  <h4>{item.title}</h4></Link>
-                  <p>{item.contain}</p>
-                  <a
-                    href={item.image}
-                    title={item.contain}
-                    className="glightbox preview-link"
-                  >
-                    <i className="bi bi-zoom-in"></i>
-                  </a>
-
-                  <Link
-                    to="/Projectdetails"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bi bi-link-45deg"></i>
-                  </Link>
-                </div>
-              </div>
+           <div
+  key={item.id}
+  className={`col-lg-4 col-md-6 portfolio-item isotope-item ${item.category}`}
+>
+  <Link
+    to="/Projectdetails"
+    className="project-card-link text-decoration-none"
+  >
+    <div className="project-card">
+      <img src={item.image} className="img-fluid" alt={item.title} />
+      <div className="portfolio-info text-white">
+        <h4>{item.title}</h4>
+        <p>{item.contain}</p>
+        <span className="preview-link" onClick={(e) => e.stopPropagation()}>
+          <a
+            href={item.image}
+            title={item.contain}
+            className="glightbox"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <i className="bi bi-zoom-in text-white me-2"></i>
+          </a>
+        </span>
+        <span className="details-link" onClick={(e) => e.stopPropagation()}>
+          <i className="bi bi-link-45deg text-white"></i>
+        </span>
+      </div>
+    </div>
+  </Link>
+</div>
             ))}
           </div>
         </section>

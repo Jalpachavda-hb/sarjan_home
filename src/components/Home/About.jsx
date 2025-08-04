@@ -2,7 +2,7 @@ import React from "react";
 import houseImage from "../../assets/img/bg/homenight.jpg";
 const AboutHome = () => {
   return (
-    <div className="abouthome">
+    <div className="abouthome container-fluid">
       <div className="container my-5 mt-5">
         
         <div className="row align-items-center">

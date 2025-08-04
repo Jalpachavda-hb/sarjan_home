@@ -11,9 +11,7 @@ const Benifitsection = () => {
   return (
     <div className="container-fluid" id="achivement">
       <div className="container">
-        <div className="sec-skill">
-          
-        </div>
+        <div className="sec-skill"></div>
       </div>
 
       <section id="features-2" className="features-2 section">
@@ -75,7 +73,7 @@ const Benifitsection = () => {
                       and harmony in your space.
                     </p>
                   </div>
-                        <div className="feature-icon flex-shrink-0">
+                  <div className="feature-icon flex-shrink-0">
                     <FaOm />
                   </div>
                 </div>
@@ -88,15 +86,14 @@ const Benifitsection = () => {
             </div>
 
             {/* Right column */}
-            <div className="col-lg-4">
+            <div className="col-lg-4 mt-4">
               <div
                 className="feature-item mb-5"
                 data-aos="fade-left"
                 data-aos-delay="200"
               >
-
                 <div className="d-flex align-items-center gap-4">
-                     <div className="feature-icon flex-shrink-0">
+                  <div className="feature-icon flex-shrink-0">
                     <MdOutlineSecurity />
                   </div>
                   <div className="feature-content">
@@ -107,7 +104,6 @@ const Benifitsection = () => {
                       and children.
                     </p>
                   </div>
-                  
                 </div>
               </div>
 
@@ -117,8 +113,8 @@ const Benifitsection = () => {
                 data-aos-delay="300"
               >
                 <div className="d-flex align-items-center gap-4">
-                     <div className="feature-icon flex-shrink-0">
-                   <TbHomeStar />
+                  <div className="feature-icon flex-shrink-0">
+                    <TbHomeStar />
                   </div>
                   <div className="feature-content">
                     <h3 className="awardh3">Amenities That Matter</h3>
@@ -137,7 +133,7 @@ const Benifitsection = () => {
                 data-aos-delay="400"
               >
                 <div className="d-flex align-items-center gap-4">
-                     <div className="feature-icon flex-shrink-0">
+                  <div className="feature-icon flex-shrink-0">
                     <FaHandshake />
                   </div>
                   <div className="feature-content">
