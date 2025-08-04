@@ -36,7 +36,7 @@ const VideoSection = () => {
             <li className="Vidio-li"> 24x7 Security with Gated Entry</li>
           </ul>
           <a href="/Property" className="text-decoration-none">
-            <button className="booking-btn">
+            <button className="booking-btn">  
               View Project Details &nbsp; &raquo;
             </button>
           </a>

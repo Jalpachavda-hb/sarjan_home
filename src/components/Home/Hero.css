@@ -22,7 +22,7 @@
 .section-title {
   color: #b48e40;
   font-family: "Poppins", sans-serif;
-  font-size: 15px;
+  font-size: 27px;
   font-weight: 600;
   margin-top: 100px !important;
   text-decoration: underline;
@@ -276,7 +276,7 @@ Menu Bar
 .header__area-menubar-right-menu ul li a {
   color: var(--white);
   display: block;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 26px;
   font-weight: 600;
   transition: all 0.4s ease-out 0s;
@@ -2121,9 +2121,54 @@ p.awardp {
     padding: 0 10px;
   }
 
-  .arrow {
-    display: none; /* hide arrows on very small screens, swiping works */
+  /* .arrow {
+    display: none; 
+  } */
+}
+@media (max-width: 576px) {
+  .testimonial-wrapper {
+    padding: 60px 0;
   }
+
+  .testimonial-text {
+    font-size: 14px;
+  }
+
+  .testimonial-user img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonial-carousel {
+    padding: 0 10px;
+  }
+
+  /* DON'T HIDE ARROWS HERE */
+  /* .arrow {
+    display: none;
+  } */
+}
+.testimonial-carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 10px;
+  overflow-x: auto; /* ✅ allow scrolling */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  width: max-content; /* ✅ ensures horizontal width is sufficient */
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+}
+
+.carousel-inner::-webkit-scrollbar {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -2140,6 +2185,37 @@ p.awardp {
     max-width: 31%;
   }
 }
+
+.testimonial-carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-wrap: nowrap;
+  padding: 0 20px;
+  overflow-x: auto; /* Allow horizontal scroll on mobile */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+}
+
+.carousel-inner {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  width: max-content; /* ensures container stretches for scrolling */
+}
+
+.carousel-inner::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 768px) {
+  .testimonial-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* footer================= */
 
 .footer {
