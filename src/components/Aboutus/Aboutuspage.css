@@ -262,9 +262,11 @@
 }
 
 .abouttitle {
-  font-family: poppins;
-  color: #b38711;
-  font-size: 4rem;
+
+ font-weight: 600;
+  color: #b48e40;
+  font-family: "Poppins", sans-serif;
+  font-size: 35px;
 }
 p {
   font-family: poppins !important;
