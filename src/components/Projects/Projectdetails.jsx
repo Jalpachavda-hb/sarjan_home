@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import brochure from "../../assets/img/1713248632_Sarjan Era Brochure.pdf"
+import brochure from "../../assets/img/1713248632_Sarjan Era Brochure.pdf";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import AOS from "aos";
 import bannerBg from "../../assets/img/bg/projectbg.jfif";
@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "aos/dist/aos.css";
 import "../Home/Hero.css";
-import "../Aboutus/Aboutuspage.css"; 
+import "../Aboutus/Aboutuspage.css";
 import logo from "../../assets/img/logo-2.png";
 import Footer from "../Home/Footer";
 import { Swiper, SwiperSlide } from "swiper/react";
