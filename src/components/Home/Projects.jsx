@@ -64,7 +64,7 @@ export default function Projects() {
   };
 
   return (
-    <section className="position-relative vh-100 overflow-hidden container ">
+    <section className="position-relative vh-100 overflow-hidden container"> 
       {slides.map((slide, index) => (
         <div
           key={slide.id}

@@ -337,7 +337,9 @@ const Contactus = () => {
                           onChange={handleChange}
                         />
                         {errors.email && (
-                          <p className="error" style={{ color: "red" }}>{errors.email}</p>
+                          <p className="error" style={{ color: "red" }}>
+                            {errors.email}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -353,7 +355,9 @@ const Contactus = () => {
                           onChange={handleChange}
                         />
                         {errors.phone && (
-                          <p className="error" style={{ color: "red" }}>{errors.phone}</p>
+                          <p className="error" style={{ color: "red" }}>
+                            {errors.phone}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -368,7 +372,10 @@ const Contactus = () => {
                           onChange={handleChange}
                         />
                         {errors.message && (
-                          <p className="error" style={{ color: "red", marginTop: "0px" }}>
+                          <p
+                            className="error"
+                            style={{ color: "red", marginTop: "0px" }}
+                          >
                             {errors.message}
                           </p>
                         )}
@@ -390,6 +397,22 @@ const Contactus = () => {
                   alt="Contact Us"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-12">
+            <div className="contact-page-map w-100">
+              <iframe
+                title="Sarjan Homes Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0826491416944!2d72.60252127514747!3d23.021635516478155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8706b4d40e1f%3A0xeec4a24e8842e43!2sVaishnodevi%20Circle%2C%20Ahmedabad%2C%20Gujarat%20382481!5e0!3m2!1sen!2sin!4v1691248303547!5m2!1sen!2sin"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>

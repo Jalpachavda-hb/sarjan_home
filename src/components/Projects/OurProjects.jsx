@@ -81,6 +81,10 @@ const OurProjects = () => {
         transitionDuration: "0.6s",
       });
 
+
+
+      
+
       filters.forEach((filter) => {
         filter.addEventListener("click", function () {
           filters.forEach((el) => el.classList.remove("filter-active"));
@@ -116,36 +120,46 @@ const OurProjects = () => {
 
           <div className="row gy-4 isotope-container">
             {portfolioItems.map((item) => (
-           <div
-  key={item.id}
-  className={`col-lg-4 col-md-6 portfolio-item isotope-item ${item.category}`}
->
-  <Link
-    to="/Projectdetails"
-    className="project-card-link text-decoration-none"
-  >
-    <div className="project-card">
-      <img src={item.image} className="img-fluid" alt={item.title} />
-      <div className="portfolio-info text-white">
-        <h4>{item.title}</h4>
-        <p>{item.contain}</p>
-        <span className="preview-link" onClick={(e) => e.stopPropagation()}>
-          <a
-            href={item.image}
-            title={item.contain}
-            className="glightbox"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <i className="bi bi-zoom-in text-white me-2"></i>
-          </a>
-        </span>
-        <span className="details-link" onClick={(e) => e.stopPropagation()}>
-          <i className="bi bi-link-45deg text-white"></i>
-        </span>
-      </div>
-    </div>
-  </Link>
-</div>
+              <div
+                key={item.id}
+                className={`col-lg-4 col-md-6 portfolio-item isotope-item ${item.category}`}
+              >
+                <Link
+                  to="/Projectdetails"
+                  className="project-card-link text-decoration-none"
+                >
+                  <div className="project-card">
+                    <img
+                      src={item.image}
+                      className="img-fluid"
+                      alt={item.title}
+                    />
+                    <div className="portfolio-info text-white">
+                      <h4>{item.title}</h4>
+                      <p>{item.contain}</p>
+                      <span
+                        className="preview-link"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <a
+                          href={item.image}
+                          title={item.contain}
+                          className="glightbox"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <i className="bi bi-zoom-in text-white me-2"></i>
+                        </a>
+                      </span>
+                      <span
+                        className="details-link"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <i className="bi bi-link-45deg text-white"></i>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
             ))}
           </div>
         </section>

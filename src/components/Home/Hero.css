@@ -29,7 +29,7 @@
 }
 
 .header__sticky.one.header__sticky-sticky-menu .header__area {
-  background: var(--heading-color);
+  background: #fff;
 }
 .header__sticky.one.header__sticky-sticky-menu .header__area.three {
   background: var(--heading-color);
@@ -87,6 +87,32 @@
   }
 }
 
+
+/* On scroll OR non-home page */
+.header__sticky.header__sticky-sticky-menu .header__area {
+  background: #fff; /* 👈 white background */
+   border-bottom: 1px solid #cca00e;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 1000;
+}
+
+/* Change link colors when sticky */
+.header__sticky.header__sticky-sticky-menu
+  .header__area-menubar-right-menu ul li a {
+  color: #9b7231/* dark text on white */
+}
+
+
+
+
+
+
+
+
 /* ------------------ RESPONSIVE ------------------ */
 
 
@@ -126,13 +152,21 @@ Menu Bar
 .header__area-menubar-left-logo a {
   display: inline-block;
 }
-.header__area-menubar-left-logo a img {
+/* .header__area-menubar-left-logo a img {
   max-width: 250px !important;
   position: relative;
   z-index: 999;
   padding: 5px;
+} */
+.header__area-menubar-left-logo a img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  position: relative;
+  z-index: 999;
+  padding: 5px;
+  display: block;
 }
-
 .header__area-menubar-left-contact {
   display: flex;
   align-items: center;

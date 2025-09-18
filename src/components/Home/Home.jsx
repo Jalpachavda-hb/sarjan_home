@@ -11,7 +11,6 @@ import "aos/dist/aos.css";
 import "./Hero.css";
 import logo from "../../assets/img/logo-2.png";
 import AboutHome from "../Home/About";
-import ThreeSteps from "../Home/WhyChoose";
 import Projects from "../Home/Projects";
 import VideoSection from "../Home/Vidiosection";
 import Benifitsection from "../Home/Benifitsection";
@@ -223,13 +222,9 @@ const Home = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="container ">
-        <span className="section-title d-block mb-4 container">About Us</span>
-        <p className="para mb-5">Dream Living Space Setting New Standards</p>
-      </div>
+
       <AboutHome />
 
-      <ThreeSteps />
       <Projects />
       <div className="container ">
         <span className="section-title d-block mb-4 container">

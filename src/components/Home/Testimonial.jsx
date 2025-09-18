@@ -53,7 +53,7 @@ const Testimonial = () => {
 
   return (
     <div className="testimonial-section">
-      <span className="container section-title d-block mb-4 mt-5 ">
+      <span className="container section-title d-block  mb-1">
         Our Testimonial
       </span>
       <p className="para container mb-5">

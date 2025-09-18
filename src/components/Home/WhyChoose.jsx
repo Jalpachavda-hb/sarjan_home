@@ -5,7 +5,7 @@ import { GrUserExpert } from "react-icons/gr";
 
 const ThreeSteps = () => {
   return (
-    <div className="three-steps-container container text-center">
+    <div className="three-steps-container container text-center  ">
       <h2 className="steps-title fw-bold">
         Delivering More Than Just Properties
       </h2>

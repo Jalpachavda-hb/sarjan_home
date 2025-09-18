@@ -133,6 +133,10 @@ button.gclose.gbtn {
   height: 4rem;
 }
 
+
+
+
+
 /*--------------------------------------------------------------
 # Portfolio Details Section
 --------------------------------------------------------------*/
@@ -231,6 +235,12 @@ button.gclose.gbtn {
 .col-12.text-center {
   position: relative;
 }
+
+.projectdetailpagetitle{
+  font-size: 40px;
+  font-weight: 800;
+}
+
 
 /* =======specification=========== */
 

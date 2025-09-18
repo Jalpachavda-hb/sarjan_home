@@ -151,3 +151,7 @@
 .contactimg {
   height: 90% !important;
 }
+.contact-page-map {
+  border-radius: 10px;
+  overflow: hidden;
+}

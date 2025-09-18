@@ -163,6 +163,7 @@ const Property = () => {
         </Swiper>
       </div>
       <div className="detailscontainer">
+        <div className="container">  <h1 className="projectname projectdetailpagetitle">Sarjan Era</h1></div>
         <h2 className=" container  mb-4 mt-5 projectdetailparatitle ">
           Built with Vision, Designed for Life
         </h2>
@@ -176,6 +177,15 @@ const Property = () => {
           functionality, and elegant design, Sarjan Homes is more than a
           residence — it’s a lifestyle built to last.
         </p>
+        <h2 className=" container  mb-4 mt-5 projectdetailparatitle ">
+          Rera Number
+        </h2>
+        <p className="fs-2 container mb-0  text-dark">
+          PR/GJ/GANDHINAGAR/GANDHINAGAR/Others/MAA11952/130623
+        </p>
+        <button className=" container mt-5 w-50 btnsite btn d-flex align-items-center para justify-content-center px-4 py-2  fw-medium">
+          <i className="ri-calendar-line me-2"></i> Download brochure
+        </button>
       </div>
       <section id="portfolio-details" className="portfolio-details section">
         <div className="container section-title" data-aos="fade-up"></div>
