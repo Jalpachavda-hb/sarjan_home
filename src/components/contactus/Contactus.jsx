@@ -304,7 +304,7 @@ const Contactus = () => {
           </div>
 
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-6">
               <div className="contact-page-form">
                 <h2>Contact us</h2>
                 <form onSubmit={handleSubmit}>
@@ -389,7 +389,7 @@ const Contactus = () => {
               </div>
             </div>
 
-            <div className="col-md-4 d-flex">
+            <div className="col-md-6 d-flex">
               <div className="contact-page-map w-100 h-100">
                 <img
                   src={contactus}
