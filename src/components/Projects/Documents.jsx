@@ -4,47 +4,62 @@ import doc2 from "../../assets/img/doc2.jpg";
 import doc3 from "../../assets/img/doc3.jpg";
 import doc4 from "../../assets/img/doc4.jpg";
 import doc5 from "../../assets/img/doc5.jpg";
+import reradoc from "../../assets/Downloaddoc/RERA Certificate.pdf";
+import RajaChitthidoc from "../../assets/Downloaddoc/Raja Chitthi.pdf";
+import Naorder from "../../assets/Downloaddoc/NA_Order.pdf";
+import AprovedPlan1 from "../../assets/Downloaddoc/1713253082_Approved Plan 1.webp";
+import AprovedPlan2 from "../../assets/Downloaddoc/1713253082_Approved Plan 2.webp";
+import AprovedPlan3 from "../../assets/Downloaddoc/1713253082_Approved Plan 3.webp";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 const documents = [
   {
-    title: "Project Master Plan",
+    title: "Approved plan 1",
     description: "Comprehensive site layout and development plan",
     fileSize: "2.4 MB",
     fileType: "PDF",
     image: doc1,
-    link: "#",
+    link: AprovedPlan1,
   },
   {
-    title: "Floor Plans",
+    title: "Approved plan 2",
     description: "Unit-wise floor plans with dimensions",
     fileSize: "3.1 MB",
     fileType: "PDF",
     image: doc2,
-    link: "#",
+    link: AprovedPlan2,
   },
   {
-    title: "Price Sheet",
+    title: "Approved plan 3",
+    description: "Unit-wise floor plans with dimensions",
+    fileSize: "3.1 MB",
+    fileType: "PDF",
+    image: doc2,
+    link: AprovedPlan3,
+  },
+
+  {
+    title: "Na_Order",
     description: "Detailed pricing of all available units",
     fileSize: "500 KB",
     fileType: "PDF",
     image: doc3,
-    link: "#",
+    link: Naorder,
   },
   {
-    title: "Legal Documents",
+    title: "Permission for development",
     description: "RERA, approval certificates & other legal docs",
     fileSize: "1.8 MB",
     fileType: "PDF",
     image: doc4,
-    link: "#",
+    link: RajaChitthidoc,
   },
   {
-    title: "Legal Documents",
+    title: "Rera Certificate  ",
     description: "RERA, approval certificates & other legal docs",
     fileSize: "1.8 MB",
     fileType: "PDF",
     image: doc5,
-    link: "#",
+    link: reradoc,
   },
 ];
 
@@ -77,47 +92,47 @@ const Documents = () => {
                   </p>
                   <a
                     href={doc.link}
-                    className="btn  mt-auto text-white p-3  download-btn "
+                    download
+                    className="btn mt-auto text-white p-3 download-btn"
                   >
-                    <i className="bi bi-download me-2 "></i>Download
+                    <i className="bi bi-download me-2"></i>Download
                   </a>
                 </div>
               </div>
             </div>
           ))}
         </div>
-     
       </div>
-         <div className="infocard">
-          <div className="info-section-container  text-center py-5">
-            <div className="info-box bg-white shadow-lg rounded-4 p-4 p-sm-5 border border-light-subtle">
-              <div className="d-flex align-items-center justify-content-center mb-3">
-                <div className="info-icon-circle rounded-circle d-flex align-items-center justify-content-center">
-                  <IoIosHelpCircleOutline className="ri-information-line iconhelp " />
-                </div>
+      <div className="infocard">
+        <div className="info-section-container  text-center py-5">
+          <div className="info-box bg-white shadow-lg rounded-4 p-4 p-sm-5 border border-light-subtle">
+            <div className="d-flex align-items-center justify-content-center mb-3">
+              <div className="info-icon-circle rounded-circle d-flex align-items-center justify-content-center">
+                <IoIosHelpCircleOutline className="ri-information-line iconhelp " />
               </div>
-              <h3 className="  mb-3 para text-dark text-bold fs-3">
-                Need Additional Information?
-              </h3>
-              <p
-                className="text-secondary small mb-3 mb-sm-4 mx-auto para"
-                style={{ maxWidth: "650px" }}
-              >
-                Our sales team is available to provide personalized project
-                presentations, site visits, and answer any questions about the
-                development.
-              </p>
-              <div className="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3">
-                <button className="btn btncall d-flex align-items-center para justify-content-center px-4 py-2  ">
-                  <i className="ri-phone-line me-2"></i> Schedule a Call
-                </button>
-                <button className=" btnsite btn d-flex align-items-center para justify-content-center px-4 py-2  fw-medium">
-                  <i className="ri-calendar-line me-2"></i> Book Site Visit
-                </button>
-              </div>
+            </div>
+            <h3 className="  mb-3 para text-dark text-bold fs-3">
+              Need Additional Information?
+            </h3>
+            <p
+              className="text-secondary small mb-3 mb-sm-4 mx-auto para"
+              style={{ maxWidth: "650px" }}
+            >
+              Our sales team is available to provide personalized project
+              presentations, site visits, and answer any questions about the
+              development.
+            </p>
+            <div className="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3">
+              <button className="btn btncall d-flex align-items-center para justify-content-center px-4 py-2  ">
+                <i className="ri-phone-line me-2"></i> Schedule a Call
+              </button>
+              <button className=" btnsite btn d-flex align-items-center para justify-content-center px-4 py-2  fw-medium">
+                <i className="ri-calendar-line me-2"></i> Book Site Visit
+              </button>
             </div>
           </div>
         </div>
+      </div>
     </section>
   );
 };
