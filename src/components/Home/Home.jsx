@@ -9,7 +9,6 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "aos/dist/aos.css";
 import "./Hero.css";
-import logo from "../../assets/img/logo-2.png";
 import AboutHome from "../Home/About";
 import Projects from "../Home/Projects";
 import VideoSection from "../Home/Vidiosection";
@@ -17,9 +16,12 @@ import Benifitsection from "../Home/Benifitsection";
 import Footer from "../Home/Footer";
 import Testimonial from "../Home/Testimonial";
 import { Link } from "react-router-dom";
+import { useLogo } from "../../contexts/LogoContext";
+import defaultLogo from "../../assets/img/logo-2.png";
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { logo, loading } = useLogo();
 
   useEffect(() => {
     AOS.init({
@@ -28,10 +30,12 @@ const Home = () => {
     });
     const handleScroll = () => {
       const header = document.querySelector(".header__sticky");
-      if (window.scrollY > 135) {
-        header.classList.add("header__sticky-sticky-menu");
-      } else {
-        header.classList.remove("header__sticky-sticky-menu");
+      if (header) {
+        if (window.scrollY > 135) {
+          header.classList.add("header__sticky-sticky-menu");
+        } else {
+          header.classList.remove("header__sticky-sticky-menu");
+        }
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -50,7 +54,7 @@ const Home = () => {
               <div className="header__area-menubar-left">
                 <div className="header__area-menubar-left-logo">
                   <Link to="/">
-                    <img src={logo} alt="Logo" />
+                    <img src={logo || defaultLogo} alt="Logo" />
                   </Link>
                 </div>
               </div>

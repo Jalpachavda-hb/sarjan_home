@@ -1,77 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Isotope from "isotope-layout";
 import GLightbox from "glightbox";
 import "glightbox/dist/css/glightbox.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Project.css";
 import imagesLoaded from "imagesloaded";
-import project1 from "../../assets/img/bg/bg1.webp";
-import project2 from "../../assets/img/bg/sarjanera.jpg";
-import project3 from "../../assets/img/bg/homenight.jpg";
-import project4 from "../../assets/img/bg/index-4.jpg";
-import project5 from "../../assets/img/bg/sarjancrystal.jpg";
-import project6 from "../../assets/img/bg/Akshatparedais.jpg";
-import project7 from "../../assets/img/bg/sarjandreams.webp";
 import { Link } from "react-router-dom";
+import { fetchSiteList } from "../../utils/Api_path";
+
 const OurProjects = () => {
-  const portfolioItems = [
-    {
-      id: 1,
-      title: "Sarjan Era",
-      category: "Ongoing-Project",
-      image: project1,
-      contain: "Residential & Retails Space",
-    },
-    {
-      id: 2,
-      title: "Sarjan Tower",
-      category: "Completed-Project",
-      image: project2,
-      contain: "Residential Project",
-    },
-    {
-      id: 3,
-      title: "Skywalk @ Chenpur",
-      category: "Completed-Project",
-      image: project3,
-      contain: "Residential & Commercial Project",
-    },
-    {
-      id: 4,
-      title: "Skywalk @ Zundal",
-      category: "Completed-Project",
-      image: project4,
-      contain: "Residential & Commercial Project",
-    },
-    {
-      id: 5,
-      title: "Swara Crystal",
-      category: "Completed-Project",
-      image: project5,
-      contain: "Residential Project",
-    },
-    {
-      id: 6,
-      title: "Akshat Paradise",
-      category: "Completed-Project",
-      image: project6,
-      contain: "Residential Project",
-    },
-    {
-      id: 7,
-      title: "Sarjan DREAMS",
-      category: "Ongoing-Project",
-      image: project7,
-      contain: "Residential Commercial Mix",
-    },
-  ];
+  const [portfolioItems, setPortfolioItems] = useState([]);
+  const [filters, setFilters] = useState(["All"]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    const loadSites = async () => {
+      try {
+        setLoading(true);
+        const sites = await fetchSiteList();
+        setPortfolioItems(sites || []);
+        
+        const uniqueTypes = [
+          ...new Set(
+            sites.map((item) => item.project_type?.trim()).filter(Boolean)
+          ),
+        ];
+        setFilters(["All", ...uniqueTypes]);
+        setError(null);
+      } catch (error) {
+        console.error("Failed to load sites:", error);
+        setError("Failed to load projects");
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadSites();
+  }, []);
+
+  // 🔹 Initialize Isotope and filters
+  useEffect(() => {
+    if (portfolioItems.length === 0) return;
+
     const grid = document.querySelector(".isotope-container");
-    const filters = document.querySelectorAll(".portfolio-filters li");
-
     const imgLoad = imagesLoaded(grid);
-
     let iso;
 
     imgLoad.on("always", () => {
@@ -81,27 +53,50 @@ const OurProjects = () => {
         transitionDuration: "0.6s",
       });
 
-
-
-      
-
-      filters.forEach((filter) => {
-        filter.addEventListener("click", function () {
-          filters.forEach((el) => el.classList.remove("filter-active"));
+      // Filter buttons
+      const filterButtons = document.querySelectorAll(".portfolio-filters li");
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          filterButtons.forEach((el) => el.classList.remove("filter-active"));
           this.classList.add("filter-active");
+
           const filterValue = this.getAttribute("data-filter");
-          iso.arrange({ filter: filterValue });
+
+          // ✅ Fix: only prepend '.' if not '*'
+          iso.arrange({
+            filter: filterValue === "*" ? "*" : `.${filterValue}`,
+          });
         });
       });
     });
 
     GLightbox({ selector: ".glightbox" });
 
-    // Cleanup on unmount
     return () => {
       if (iso) iso.destroy();
     };
-  }, []);
+  }, [portfolioItems]);
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
+        <div className="text-center">
+          <h3>Error Loading Projects</h3>
+          <p>{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <main className="main">
@@ -110,57 +105,73 @@ const OurProjects = () => {
         <p className="para mb-5">Discover a place you’ll love to live</p>
 
         <section className="portfolio section">
+          {/* 🔹 Dynamic Filter Buttons */}
           <ul className="portfolio-filters isotope-filters mb-4">
-            <li data-filter="*" className="filter-active">
-              All
-            </li>
-            <li data-filter=".Ongoing-Project">Ongoing Project</li>
-            <li data-filter=".Completed-Project">Completed Project</li>
+            {filters.map((type, index) => (
+              <li
+                key={index}
+                // ✅ No leading dot in data-filter
+                data-filter={type === "All" ? "*" : type.replace(/\s+/g, "-")}
+                className={index === 0 ? "filter-active" : ""}
+              >
+                {type}
+              </li>
+            ))}
           </ul>
 
+          {/* 🔹 Dynamic Project Cards */}
           <div className="row gy-4 isotope-container">
-            {portfolioItems.map((item) => (
-              <div
-                key={item.id}
-                className={`col-lg-4 col-md-6 portfolio-item isotope-item ${item.category}`}
-              >
-                <Link
-                  to="/Projectdetails"
-                  className="project-card-link text-decoration-none"
+            {portfolioItems.map((item) => {
+              const typeClass = item.project_type
+                ? item.project_type.replace(/\s+/g, "-")
+                : "";
+              return (
+                <div
+                  key={item.id}
+                  className={`col-lg-4 col-md-6 portfolio-item isotope-item ${typeClass}`}
                 >
-                  <div className="project-card">
-                    <img
-                      src={item.image}
-                      className="img-fluid"
-                      alt={item.title}
-                    />
-                    <div className="portfolio-info text-white">
-                      <h4>{item.title}</h4>
-                      <p>{item.contain}</p>
-                      <span
-                        className="preview-link"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <a
-                          href={item.image}
-                          title={item.contain}
-                          className="glightbox"
+                  <Link
+                    to={`/Projectdetails/${item.id}`}
+                    className="project-card-link text-decoration-none"
+                  >
+                    <div className="project-card">
+                      <img
+                        src={item.banner}
+                        className="img-fluid"
+                        alt={item.title}
+                      />
+                      <div className="portfolio-info text-white">
+                        <h4>{item.title}</h4>
+                        <p>{item.project_category_name}</p>
+
+                        {/* Lightbox Preview */}
+                        <span
+                          className="preview-link"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <i className="bi bi-zoom-in text-white me-2"></i>
-                        </a>
-                      </span>
-                      <span
-                        className="details-link"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <i className="bi bi-link-45deg text-white"></i>
-                      </span>
+                          <a
+                            href={item.banner}
+                            title={item.project_category_name}
+                            className="glightbox"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <i className="bi bi-zoom-in text-white me-2"></i>
+                          </a>
+                        </span>
+
+                        {/* Link Icon */}
+                        <span
+                          className="details-link"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <i className="bi bi-link-45deg text-white"></i>
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </section>
       </div>

@@ -669,3 +669,22 @@ ul li:before {
 .cardcontain{
   font-size: 14px;
 }
+
+
+
+
+.text3d {
+  font-size: 100px;
+  font-weight: bold;
+  color: #b48e40;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 
+    1px 1px 0 #6d6161,
+    2px 2px 0 #5f5858,
+    3px 3px 0 #917575,
+    4px 4px 0 #726464,
+    5px 5px 0 #916565,
+    6px 6px 0 #5e4d4d;
+}
+

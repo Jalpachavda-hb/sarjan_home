@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import brochure from "../../assets/img/1713248632_Sarjan Era Brochure.pdf";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import AOS from "aos";
 import bannerBg from "../../assets/img/bg/projectbg.jfif";
@@ -9,13 +8,16 @@ import "swiper/css/effect-fade";
 import "aos/dist/aos.css";
 import "../Home/Hero.css";
 import "../Aboutus/Aboutuspage.css";
-import logo from "../../assets/img/logo-2.png";
+import { useParams } from "react-router-dom";
+import { useProjectDetails } from "../../utils/useProjectDetails";
 import Footer from "../Home/Footer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
+import { useLogo } from "../../contexts/LogoContext";
+import defaultLogo from "../../assets/img/logo-2.png";
 import img1 from "../../assets/img/bg/bg1.webp";
 import img2 from "../../assets/img/bg/homenight.jpg";
 import img3 from "../../assets/img/bg/bg1.webp";
@@ -24,8 +26,12 @@ import Specificationsection from "./Specificationsection";
 import Buildingplans from "./Buildingplan";
 import Documents from "./Documents";
 import Amenities from "./Amenities ";
+
 const Property = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { logo, loading } = useLogo();
+  const { id } = useParams();
+  const { projectData, error } = useProjectDetails(id);
 
   useEffect(() => {
     AOS.init({
@@ -34,33 +40,76 @@ const Property = () => {
     });
     const handleScroll = () => {
       const header = document.querySelector(".header__sticky");
-      if (window.scrollY > 135) {
-        header.classList.add("header__sticky-sticky-menu");
-      } else {
-        header.classList.remove("header__sticky-sticky-menu");
+      if (header) {
+        if (window.scrollY > 135) {
+          header.classList.add("header__sticky-sticky-menu");
+        } else {
+          header.classList.remove("header__sticky-sticky-menu");
+        }
       }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    console.log("Full projectData:", projectData);
+    if (projectData) {
+      console.log("Site data:", projectData.site);
+      console.log("Gallery images:", projectData.gallery_images);
+      console.log("RERA documents:", projectData.rera_documents);
+    }
+  }, [projectData]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!projectData) return <div>No project data found.</div>;
+
+  // Destructure with proper fallbacks based on actual API structure
+  const {
+    site,
+    gallery_images = [],
+    rera_documents = [],
+    bird_views = [],
+    unit_plans = [],
+    floor_images = [],
+  } = projectData;
+
+  if (!site) return <div>No site data found.</div>;
+
+  const {
+    title = "Project Title",
+    descr = "Description not available",
+    rera_number = "RERA number not available",
+    banner = bannerBg,
+    brochure = "#",
+    amenities = "",
+    specification = "",
+ 
+    // bhk_details = ""
+  } = site;
+
+  // Get gallery image URLs or fallback to default images
+  const galleryImages =
+    gallery_images.length > 0
+      ? gallery_images.map((img) => img.gallery_image)
+      : [img1, img2, img3, img4];
+
   return (
     <>
-      {/* Navbar */}
+      {/* Navbar - Keep your existing navbar code */}
       <header className="header__sticky one">
         <div className="header__area">
           <div className="container ">
             <div className="header__area-menubar d-flex justify-content-between align-items-center">
-              {/* Logo */}
               <div className="header__area-menubar-left">
                 <div className="header__area-menubar-left-logo">
                   <Link to="/">
-                    <img src={logo} alt="Logo" />
+                    <img src={logo || defaultLogo} alt="Logo" />
                   </Link>
                 </div>
               </div>
 
-              {/* Desktop Menu */}
               <div className="header__area-menubar-right-menu d-none d-lg-block">
                 <ul
                   className="mainmenu d-flex align-items-center"
@@ -81,7 +130,6 @@ const Property = () => {
                 </ul>
               </div>
 
-              {/* Mobile Menu Toggle */}
               <div
                 className="menu-toggle d-lg-none"
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -93,7 +141,6 @@ const Property = () => {
             </div>
           </div>
 
-          {/* Mobile Menu */}
           {menuOpen && (
             <div className="menu-responsive-mobile d-lg-none">
               <ul>
@@ -122,6 +169,7 @@ const Property = () => {
           )}
         </div>
       </header>
+
       {/* Banner Area */}
       <div className="home__banner">
         <Swiper
@@ -137,23 +185,20 @@ const Property = () => {
           fadeEffect={{ crossFade: true }}
           speed={1200}
         >
-          {/* Slide 1 */}
           <SwiperSlide>
             <div className="banner__slide-area home__banner-aboutus">
               <div
                 className="banner__slide-area-image"
-                style={{ backgroundImage: `url(${bannerBg})` }}
+                style={{ backgroundImage: `url(${banner || bannerBg})` }}
               ></div>
               <div className="container">
                 <div className="row justify-content-center align-items-center">
                   <div className="col-12 text-center">
                     <div className="home__banner-title" data-aos="fade-up">
-                      <div className="home__banner-title" data-aos="fade-up">
-                        <h1>Project Details</h1>
-                        <p className="text-white">
-                          Discover a place you’ll love to live
-                        </p>
-                      </div>
+                      <h1>Project Details</h1>
+                      <p className="text-white">
+                        Discover a place you'll love to live
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -162,12 +207,14 @@ const Property = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+
+      {/* Project Details */}
       <div className="detailscontainer">
         <div className="container">
-          {" "}
-          <h1 className="projectname projectdetailpagetitle">Sarjan Era</h1>
+          <h1 className="projectname projectdetailpagetitle">{title}</h1>
         </div>
-        <h2 className=" container  mb-4 mt-5 projectdetailparatitle ">
+
+        <h2 className="container mb-4 mt-5 projectdetailparatitle">
           Built with Vision, Designed for Life
         </h2>
         <p className="para container mb-0 ">
@@ -180,25 +227,30 @@ const Property = () => {
           functionality, and elegant design, Sarjan Homes is more than a
           residence — it’s a lifestyle built to last.
         </p>
-        <h2 className=" container  mb-4 mt-5 projectdetailparatitle ">
+        <h3 className="para container mb-0">{descr}</h3>
+
+        <h2 className="container mb-4 mt-5 projectdetailparatitle">
           Rera Number
         </h2>
-        <p className="fs-2 container mb-0  text-dark">
-          PR/GJ/GANDHINAGAR/GANDHINAGAR/Others/MAA11952/130623
-        </p>
 
-        {/* <button className=" container mt-5 w-50 btnsite btn d-flex align-items-center para justify-content-center px-4 py-2  fw-medium">
-          <i className="ri-calendar-line me-2"></i> Download brochure
-        </button> */}
+        <p className="fs-2 container mb-0 text-dark">{rera_number}</p>
 
         <a
           href={brochure}
           download="Sarjan Era Brochure.pdf"
           className="container mt-5 w-50 btnsite btn d-flex align-items-center para justify-content-center px-4 py-2 fw-medium"
+          onClick={(e) =>
+            !brochure || brochure === "#" ? e.preventDefault() : null
+          }
         >
-          <i className="ri-calendar-line me-2"></i> Download brochure
+          <i className="ri-calendar-line me-2"></i>
+          {brochure && brochure !== "#"
+            ? "Download brochure"
+            : "Brochure not available"}
         </a>
       </div>
+
+      {/* Gallery Section */}
       <section id="portfolio-details" className="portfolio-details section">
         <div className="container section-title" data-aos="fade-up"></div>
 
@@ -216,18 +268,11 @@ const Property = () => {
                   modules={[Pagination, Autoplay]}
                   className="init-swiper"
                 >
-                  <SwiperSlide>
-                    <img src={img1} alt="Slide 1" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src={img2} alt="Slide 2" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src={img3} alt="Slide 3" />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img src={img4} alt="Slide 4" />
-                  </SwiperSlide>
+                  {galleryImages.map((img, index) => (
+                    <SwiperSlide key={index}>
+                      <img src={img} alt={`Slide ${index + 1}`} />
+                    </SwiperSlide>
+                  ))}
                 </Swiper>
                 <div className="swiper-pagination"></div>
               </div>
@@ -240,11 +285,14 @@ const Property = () => {
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
-                <h3 className="projectname">Sarjan Era</h3>
+                <h3 className="projectname">{title}</h3>
                 <ul>
                   <li className="mb-3">
-                    <strong>Category</strong>: Ongoing Project
+                    <strong>Category</strong>: {projectData.project_type}
                   </li>
+                  {/* <li className="mb-3">
+                    <strong>BHK Details</strong>: {bhk_details || "Not specified"}
+                  </li> */}
                   <li className="mb-3">
                     <a
                       href="#amenities"
@@ -266,8 +314,10 @@ const Property = () => {
                       href="#building-plans"
                       className="text-decoration-none text-dark"
                     >
-                      <strong>Building plans</strong>: Flexible plans for future
-                      customization.
+                      <strong>Building plans</strong>:{" "}
+                      {unit_plans.length > 0
+                        ? `${unit_plans.length} plans available`
+                        : "No plans available"}
                     </a>
                   </li>
                   <li className="mb-3">
@@ -275,55 +325,59 @@ const Property = () => {
                       href="#rara-document"
                       className="text-decoration-none text-dark"
                     >
-                      <strong>Documents</strong>: Flexible plans for future
-                      customization.
+                      <strong>Documents</strong>:{" "}
+                      {rera_documents.length > 0
+                        ? `${rera_documents.length} documents available`
+                        : "No documents available"}
                     </a>
                   </li>
                 </ul>
               </div>
-              <div
-                className="portfolio-description"
-                data-aos="fade-up"
-                data-aos-delay="300"
-                //  style={{ maxHeight: "200px", overflowY: "auto" }}
-              ></div>
+              {/* {bhk_details && <h6 className="text3d">{bhk_details}</h6>} */}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Pass the actual data to your components */}
       <section id="amenities">
         <span className="container section-title d-block mb-4 mt-5">
           Amenities
         </span>
-        <p className="para container mb-5 ">Your Need, Our Expertise</p>
-        <Amenities />
+        <p className="para container mb-5">Your Need, Our Expertise</p>
+        <Amenities amenitiesData={amenities} />
       </section>
 
       <section id="speciality">
         <span className="container section-title d-block mb-4 mt-5">
           Speciality
         </span>
-        <p className="para container mb-5 ">Premium quality construction</p>
-        <Specificationsection />
+        <p className="para container mb-5">Premium quality construction</p>
+        <Specificationsection specificationData={specification} />
       </section>
 
       <section id="building-plans">
         <span className="container section-title d-block mb-4 mt-5">
           Building plans
         </span>
-        <p className="para container mb-5 ">
+        <p className="para container mb-5">
           Flexible plans for future customization.
         </p>
-        <Buildingplans />
+        <Buildingplans
+          birdViews={bird_views}
+          unitPlans={unit_plans}
+          floorImages={floor_images}
+        />
       </section>
+
       <section id="rara-document">
         <span className="container section-title d-block mb-4 mt-5">
           Rera Documents
         </span>
-        <p className="para container mb-5 ">
-          Flexible plans for future customization.
+        <p className="para container mb-5">
+          Official project documents and certifications.
         </p>
-        <Documents />
+        <Documents reraDocuments={rera_documents} />
       </section>
 
       <Footer />

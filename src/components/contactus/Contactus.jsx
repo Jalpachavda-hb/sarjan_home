@@ -8,7 +8,6 @@ import "./contsct.css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "aos/dist/aos.css";
-import logo from "../../assets/img/logo-2.png";
 import Footer from "../Home/Footer";
 import { FaMapLocation } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
@@ -19,9 +18,12 @@ import contactus from "../../assets/img/bg/contact.jpg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import { useLogo } from "../../contexts/LogoContext";
+import defaultLogo from "../../assets/img/logo-2.png";
 
 const Contactus = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { logo, loading } = useLogo();
 
   useEffect(() => {
     AOS.init({
@@ -30,10 +32,12 @@ const Contactus = () => {
     });
     const handleScroll = () => {
       const header = document.querySelector(".header__sticky");
-      if (window.scrollY > 135) {
-        header.classList.add("header__sticky-sticky-menu");
-      } else {
-        header.classList.remove("header__sticky-sticky-menu");
+      if (header) {
+        if (window.scrollY > 135) {
+          header.classList.add("header__sticky-sticky-menu");
+        } else {
+          header.classList.remove("header__sticky-sticky-menu");
+        }
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -113,7 +117,7 @@ const Contactus = () => {
               <div className="header__area-menubar-left">
                 <div className="header__area-menubar-left-logo">
                   <Link to="/">
-                    <img src={logo} alt="Logo" />
+                    <img src={logo || defaultLogo} alt="Logo" />
                   </Link>
                 </div>
               </div>

@@ -1,117 +1,86 @@
 import React from "react";
-import doc1 from "../../assets/img/masterplan.jpg";
-import doc2 from "../../assets/img/doc2.jpg";
-import doc3 from "../../assets/img/doc3.jpg";
-import doc4 from "../../assets/img/doc4.jpg";
-import doc5 from "../../assets/img/doc5.jpg";
-import reradoc from "../../assets/Downloaddoc/RERA Certificate.pdf";
-import RajaChitthidoc from "../../assets/Downloaddoc/Raja Chitthi.pdf";
-import Naorder from "../../assets/Downloaddoc/NA_Order.pdf";
-import AprovedPlan1 from "../../assets/Downloaddoc/1713253082_Approved Plan 1.webp";
-import AprovedPlan2 from "../../assets/Downloaddoc/1713253082_Approved Plan 2.webp";
-import AprovedPlan3 from "../../assets/Downloaddoc/1713253082_Approved Plan 3.webp";
 import { IoIosHelpCircleOutline } from "react-icons/io";
-const documents = [
-  {
-    title: "Approved plan 1",
-    description: "Comprehensive site layout and development plan",
-    fileSize: "2.4 MB",
-    fileType: "PDF",
-    image: doc1,
-    link: AprovedPlan1,
-  },
-  {
-    title: "Approved plan 2",
-    description: "Unit-wise floor plans with dimensions",
-    fileSize: "3.1 MB",
-    fileType: "PDF",
-    image: doc2,
-    link: AprovedPlan2,
-  },
-  {
-    title: "Approved plan 3",
-    description: "Unit-wise floor plans with dimensions",
-    fileSize: "3.1 MB",
-    fileType: "PDF",
-    image: doc2,
-    link: AprovedPlan3,
-  },
+import commonDocImage from "../../assets/img/docimg.png"; // common image for all docs
 
-  {
-    title: "Na_Order",
-    description: "Detailed pricing of all available units",
-    fileSize: "500 KB",
-    fileType: "PDF",
-    image: doc3,
-    link: Naorder,
-  },
-  {
-    title: "Permission for development",
-    description: "RERA, approval certificates & other legal docs",
-    fileSize: "1.8 MB",
-    fileType: "PDF",
-    image: doc4,
-    link: RajaChitthidoc,
-  },
-  {
-    title: "Rera Certificate  ",
-    description: "RERA, approval certificates & other legal docs",
-    fileSize: "1.8 MB",
-    fileType: "PDF",
-    image: doc5,
-    link: reradoc,
-  },
-];
-
-const Documents = () => {
+const Documents = ({ reraDocuments = [] }) => {
+  // Ensure documents is always an array
+  const documents = reraDocuments || [];
+  const handleDownload = async (url, filename) => {
+    console.log(url);
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+      window.URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error("Download failed:", error);
+      // Fallback: open in new tab
+      window.open(url, "_blank");
+    }
+  };
   return (
     <section className="py-5 bg-light documents-section">
       <div className="container">
         <div className="row g-4">
-          {documents.map((doc, index) => (
-            <div className="col-md-6 col-lg-4" key={index}>
-              <div className="card h-100 document-card border-0 shadow-sm">
-                <div className="position-relative overflow-hidden doc-img-wrapper">
-                  <img
-                    src={doc.image}
-                    alt={doc.title}
-                    className="card-img-top object-fit-cover h-100"
-                  />
-                  <div className="position-absolute top-0 end-0 m-2 d-flex gap-2">
-                    <span className="badge bg-white text-dark fw-medium small-badge">
-                      {doc.fileType}
-                    </span>
+          {documents.length > 0 ? (
+            documents.map((doc, index) => (
+              <div className="col-md-6 col-lg-4" key={index}>
+                <div className="card h-100 document-card border-0 shadow-sm">
+                  <div className="position-relative overflow-hidden doc-img-wrapper">
+                    <img
+                      src={commonDocImage} // common image for all documents
+                      alt={doc.document_name || "Document"}
+                      className="card-img-top object-fit-cover h-100"
+                    />
+                    <div className="position-absolute top-0 end-0 m-2 d-flex gap-2">
+                      <span className="badge bg-white text-dark fw-medium small-badge">
+                        PDF
+                      </span>
+                    </div>
+                  </div>
+                  <div className="card-body d-flex flex-column mb-5">
+                    <h5 className="card-title text-dark doc-title">
+                      {doc.document_name || "RERA Certificate"}
+                    </h5>
+                    <p className="card-text text-muted flex-grow-1 doc-desc">
+                      {/* You can add description if available */}
+                      {doc.description || "Official RERA document"}
+                    </p>
+
+                    <button
+                      onClick={() =>
+                        handleDownload(
+                          doc.rera_documents, // <-- correct field from API
+                          doc.document_name || "RERA_Certificate.pdf"
+                        )
+                      }
+                      className="btn mt-auto text-white p-3 download-btn"
+                    >
+                      <i className="bi bi-download me-2"></i>Download
+                    </button>
                   </div>
                 </div>
-                <div className="card-body d-flex flex-column mb-5">
-                  <h5 className="card-title text-dark doc-title">
-                    {doc.title}
-                  </h5>
-                  <p className="card-text text-muted flex-grow-1 doc-desc">
-                    {doc.description}
-                  </p>
-                  <a
-                    href={doc.link}
-                    download
-                    className="btn mt-auto text-white p-3 download-btn"
-                  >
-                    <i className="bi bi-download me-2"></i>Download
-                  </a>
-                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-center">No documents available.</p>
+          )}
         </div>
       </div>
+
+      {/* Info Section */}
       <div className="infocard">
-        <div className="info-section-container  text-center py-5">
+        <div className="info-section-container text-center py-5">
           <div className="info-box bg-white shadow-lg rounded-4 p-4 p-sm-5 border border-light-subtle">
             <div className="d-flex align-items-center justify-content-center mb-3">
               <div className="info-icon-circle rounded-circle d-flex align-items-center justify-content-center">
-                <IoIosHelpCircleOutline className="ri-information-line iconhelp " />
+                <IoIosHelpCircleOutline className="ri-information-line iconhelp" />
               </div>
             </div>
-            <h3 className="  mb-3 para text-dark text-bold fs-3">
+            <h3 className="mb-3 para text-dark text-bold fs-3">
               Need Additional Information?
             </h3>
             <p
@@ -123,10 +92,10 @@ const Documents = () => {
               development.
             </p>
             <div className="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3">
-              <button className="btn btncall d-flex align-items-center para justify-content-center px-4 py-2  ">
+              <button className="btn btncall d-flex align-items-center para justify-content-center px-4 py-2">
                 <i className="ri-phone-line me-2"></i> Schedule a Call
               </button>
-              <button className=" btnsite btn d-flex align-items-center para justify-content-center px-4 py-2  fw-medium">
+              <button className="btn btnsite d-flex align-items-center para justify-content-center px-4 py-2 fw-medium">
                 <i className="ri-calendar-line me-2"></i> Book Site Visit
               </button>
             </div>

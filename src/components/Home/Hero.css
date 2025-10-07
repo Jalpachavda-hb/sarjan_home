@@ -87,34 +87,28 @@
   }
 }
 
-
 /* On scroll OR non-home page */
 .header__sticky.header__sticky-sticky-menu .header__area {
   background: #fff; /* 👈 white background */
-   border-bottom: 1px solid #cca00e;
+  border-bottom: 1px solid #cca00e;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   z-index: 1000;
 }
 
 /* Change link colors when sticky */
 .header__sticky.header__sticky-sticky-menu
-  .header__area-menubar-right-menu ul li a {
-  color: #9b7231/* dark text on white */
+  .header__area-menubar-right-menu
+  ul
+  li
+  a {
+  color: #9b7231; /* dark text on white */
 }
 
-
-
-
-
-
-
-
 /* ------------------ RESPONSIVE ------------------ */
-
 
 /*==========================================================================
 Menu Bar
@@ -732,8 +726,6 @@ Responsive Menu Css
   opacity: 1;
 }
 
-
-
 /*==========================================================================
 Banner
 ========================================================================== */
@@ -834,7 +826,6 @@ Banner
   color: var(--white);
   background: var(--primary-color);
 }
-
 
 .menu-toggle {
   background-color: none;
@@ -993,13 +984,12 @@ li.menu-item-has-children {
 
 /* ========== RESPONSIVE STYLES ========== */
 
-
 /* ============About=========== */
 
 .counts {
   color: #b48e40;
   font-family: "Poppins", sans-serif;
-  font-size: 3rem ;
+  font-size: 3rem;
 }
 
 .countstext {
@@ -1440,7 +1430,6 @@ button:focus {
   flex-grow: 1;
 }
 
-
 .play-button {
   position: absolute;
   top: 50%;
@@ -1647,7 +1636,6 @@ p.awardp {
 }
 /* ===benifitsection====== */
 
-
 .benefit-section-bg {
   position: relative;
   padding: 60px 0;
@@ -1794,7 +1782,6 @@ p.awardp {
   display: none;
 }
 
-
 .testimonial-carousel {
   display: flex;
   align-items: center;
@@ -1818,7 +1805,6 @@ p.awardp {
 .carousel-inner::-webkit-scrollbar {
   display: none;
 }
-
 
 /* footer================= */
 
@@ -1981,11 +1967,11 @@ p.awardp {
   margin-bottom: 12px;
   color: #eee;
 }
-.parafooter{
+.parafooter {
   color: #eee !important;
-   font-size: 16px !important;
+  font-size: 16px !important;
   font-weight: 400 !important;
-  
+
   font-family: "Poppins", sans-serif !important;
 }
 .footer-icon {
@@ -2038,7 +2024,6 @@ p.awardp {
   padding: 60px 0;
   font-family: "Poppins", sans-serif;
 }
-
 
 /* =========media Query========== */
 
@@ -2104,9 +2089,8 @@ p.awardp {
   }
 }
 @media (max-width: 359px) {
-
   .testimonial-section {
-  display: none;
+    display: none;
   }
 }
 
@@ -2513,7 +2497,6 @@ p.awardp {
     z-index: 1002;
   }
 }
-
 
 .projectdetailspara {
   height: 400px; /* You can increase this based on design */
