@@ -138,7 +138,7 @@ const Buildingplans = ({ birdViews = [], unitPlans = [], floorImages = [] }) => 
               image: view.bird_view_image,
               title: `Bird View ${index + 1}`
             }))
-          : "No plan found";
+          : [];
       
       case "layoutplan":
         return unitPlans.length > 0
@@ -146,7 +146,7 @@ const Buildingplans = ({ birdViews = [], unitPlans = [], floorImages = [] }) => 
               image: plan.unit_plan_image,
               title: `Unit Plan ${index + 1}`
             }))
-          : "No plan found";
+          : [];
       
       case "floorplan":
         return floorImages.length > 0
@@ -154,7 +154,7 @@ const Buildingplans = ({ birdViews = [], unitPlans = [], floorImages = [] }) => 
               image: floor.floor_image,
               title: `Floor Plan ${index + 1}`
             }))
-          :"No plan found";
+          : [];
       
       default:
         return [];

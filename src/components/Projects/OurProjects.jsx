@@ -20,7 +20,7 @@ const OurProjects = () => {
         setLoading(true);
         const sites = await fetchSiteList();
         setPortfolioItems(sites || []);
-        
+
         const uniqueTypes = [
           ...new Set(
             sites.map((item) => item.project_type?.trim()).filter(Boolean)
@@ -79,7 +79,10 @@ const OurProjects = () => {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "50vh" }}
+      >
         <div className="spinner-border text-primary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
@@ -89,7 +92,10 @@ const OurProjects = () => {
 
   if (error) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "50vh" }}
+      >
         <div className="text-center">
           <h3>Error Loading Projects</h3>
           <p>{error}</p>

@@ -85,7 +85,7 @@ const Property = () => {
     brochure = "#",
     amenities = "",
     specification = "",
- 
+
     // bhk_details = ""
   } = site;
 
