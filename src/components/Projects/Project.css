@@ -610,3 +610,77 @@ button.gclose.gbtn {
   }
 }
 
+
+
+
+.building-plans-swiper-container {
+  position: relative;
+}
+
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background:#b38711;
+  border-radius: 50%;
+  color: white;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+  background: #b38711;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.swiper-button-prev-custom {
+  left: 10px;
+}
+
+.swiper-button-next-custom {
+  right: 10px;
+}
+
+.swiper-button-prev-custom i,
+.swiper-button-next-custom i {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Hide default Swiper navigation */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+/* Responsive arrows */
+@media (max-width: 768px) {
+  .swiper-button-prev-custom,
+  .swiper-button-next-custom {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .swiper-button-prev-custom i,
+  .swiper-button-next-custom i {
+    font-size: 20px;
+  }
+  
+  .swiper-button-prev-custom {
+    left: 5px;
+  }
+  
+  .swiper-button-next-custom {
+    right: 5px;
+  }
+}

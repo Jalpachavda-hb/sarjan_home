@@ -3,24 +3,24 @@ import { IoIosHelpCircleOutline } from "react-icons/io";
 import commonDocImage from "../../assets/img/docimg.png"; // common image for all docs
 
 const Documents = ({ reraDocuments = [] }) => {
-  // Ensure documents is always an array
   const documents = reraDocuments || [];
-  const handleDownload = async (url, filename) => {
-    console.log(url);
-    try {
-      const response = await fetch(url);
-      const blob = await response.blob();
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      link.download = filename;
-      link.click();
-      window.URL.revokeObjectURL(link.href);
-    } catch (error) {
-      console.error("Download failed:", error);
-      // Fallback: open in new tab
-      window.open(url, "_blank");
+
+  const handleDownload = (url, filename) => {
+    if (!url) {
+      console.error("Download URL is missing");
+      return;
     }
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename || "document.pdf";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
+
   return (
     <section className="py-5 bg-light documents-section">
       <div className="container">
@@ -31,8 +31,8 @@ const Documents = ({ reraDocuments = [] }) => {
                 <div className="card h-100 document-card border-0 shadow-sm">
                   <div className="position-relative overflow-hidden doc-img-wrapper">
                     <img
-                      src={commonDocImage} // common image for all documents
-                      alt={doc.document_name || "Document"}
+                      src={commonDocImage}
+                      alt={`Approved Plan ${index + 1}`}
                       className="card-img-top object-fit-cover h-100"
                     />
                     <div className="position-absolute top-0 end-0 m-2 d-flex gap-2">
@@ -41,20 +41,22 @@ const Documents = ({ reraDocuments = [] }) => {
                       </span>
                     </div>
                   </div>
+
                   <div className="card-body d-flex flex-column mb-5">
+                    {/* 👇 Static document name */}
                     <h5 className="card-title text-dark doc-title">
-                      {doc.document_name || "RERA Certificate"}
+                      Approved Plan {index + 1}
                     </h5>
+
                     <p className="card-text text-muted flex-grow-1 doc-desc">
-                      {/* You can add description if available */}
-                      {doc.description || "Official RERA document"}
+                      Official RERA approved plan document
                     </p>
 
                     <button
                       onClick={() =>
                         handleDownload(
-                          doc.rera_documents, // <-- correct field from API
-                          doc.document_name || "RERA_Certificate.pdf"
+                          doc.rera_documents,
+                          `Approved_Plan_${index + 1}.pdf`
                         )
                       }
                       className="btn mt-auto text-white p-3 download-btn"

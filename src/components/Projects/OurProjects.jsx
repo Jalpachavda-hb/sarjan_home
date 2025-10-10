@@ -7,7 +7,8 @@ import "./Project.css";
 import imagesLoaded from "imagesloaded";
 import { Link } from "react-router-dom";
 import { fetchSiteList } from "../../utils/Api_path";
-
+import LazyImage from "../common/LazyImage";
+  
 const OurProjects = () => {
   const [portfolioItems, setPortfolioItems] = useState([]);
   const [filters, setFilters] = useState(["All"]);
@@ -39,43 +40,48 @@ const OurProjects = () => {
   }, []);
 
   // 🔹 Initialize Isotope and filters
-  useEffect(() => {
-    if (portfolioItems.length === 0) return;
+ useEffect(() => {
+  if (portfolioItems.length === 0) return;
 
-    const grid = document.querySelector(".isotope-container");
-    const imgLoad = imagesLoaded(grid);
-    let iso;
+  const grid = document.querySelector(".isotope-container");
+  const imgLoad = imagesLoaded(grid);
+  let iso;
+  let lightbox; // 🔹 Keep a reference
 
-    imgLoad.on("always", () => {
-      iso = new Isotope(grid, {
-        itemSelector: ".isotope-item",
-        layoutMode: "masonry",
-        transitionDuration: "0.6s",
-      });
+  imgLoad.on("always", () => {
+    iso = new Isotope(grid, {
+      itemSelector: ".isotope-item",
+      layoutMode: "masonry",
+      transitionDuration: "0.6s",
+    });
 
-      // Filter buttons
-      const filterButtons = document.querySelectorAll(".portfolio-filters li");
-      filterButtons.forEach((btn) => {
-        btn.addEventListener("click", function () {
-          filterButtons.forEach((el) => el.classList.remove("filter-active"));
-          this.classList.add("filter-active");
+    // Filter buttons
+    const filterButtons = document.querySelectorAll(".portfolio-filters li");
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        filterButtons.forEach((el) => el.classList.remove("filter-active"));
+        this.classList.add("filter-active");
 
-          const filterValue = this.getAttribute("data-filter");
-
-          // ✅ Fix: only prepend '.' if not '*'
-          iso.arrange({
-            filter: filterValue === "*" ? "*" : `.${filterValue}`,
-          });
+        const filterValue = this.getAttribute("data-filter");
+        iso.arrange({
+          filter: filterValue === "*" ? "*" : `.${filterValue}`,
         });
       });
     });
+  });
 
-    GLightbox({ selector: ".glightbox" });
+  // ✅ Initialize GLightbox safely and store reference
+  lightbox = GLightbox({ selector: ".glightbox" });
 
-    return () => {
-      if (iso) iso.destroy();
-    };
-  }, [portfolioItems]);
+  // ✅ Cleanup function
+  return () => {
+    if (iso) iso.destroy();
+    if (lightbox && typeof lightbox.destroy === "function") {
+      lightbox.destroy();
+      lightbox = null;
+    }
+  };
+}, [portfolioItems]);
 
   if (loading) {
     return (
@@ -141,7 +147,7 @@ const OurProjects = () => {
                     className="project-card-link text-decoration-none"
                   >
                     <div className="project-card">
-                      <img
+                      <LazyImage
                         src={item.banner}
                         className="img-fluid"
                         alt={item.title}

@@ -5,6 +5,16 @@ import { toast } from "react-toastify";
 // Base URL
 export const BASE_URL = "http://192.168.29.2:8000/api/";
 
+// Loading state context - will be used by components
+let loadingManager = {
+  showLoader: () => {},
+  hideLoader: () => {}
+};
+
+export const setLoadingManager = (manager) => {
+  loadingManager = manager;
+};
+
 // Axios instance
 const apiClient = axios.create({
   baseURL: BASE_URL,
@@ -37,23 +47,29 @@ export const API_PATHS = {
 
 // Web Setting
 export const fetchWebSetting = async () => {
+  loadingManager.showLoader();
   try {
     const res = await apiClient.get(API_PATHS.WEBSETTING.GETWEBSETTING);
     return res.data?.data;
   } catch (err) {
     toast.error("Failed to fetch Web Setting ❌");
     throw err;
+  } finally {
+    loadingManager.hideLoader();
   }
 };
 
 // Site List
 export const fetchSiteList = async () => {
+  loadingManager.showLoader();
   try {
     const res = await apiClient.get(API_PATHS.SITEDETAILS.GETSITEDETAILS);
     return res.data?.data;
   } catch (err) {
     toast.error("Failed to fetch Site List ❌");
     throw err;
+  } finally {
+    loadingManager.hideLoader();
   }
 };
 
