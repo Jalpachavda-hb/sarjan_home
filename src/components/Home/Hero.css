@@ -29,7 +29,7 @@
 }
 
 .header__sticky.one.header__sticky-sticky-menu .header__area {
-  background: #fff;
+  background: #000000;
 }
 .header__sticky.one.header__sticky-sticky-menu .header__area.three {
   background: var(--heading-color);
@@ -89,8 +89,9 @@
 
 /* On scroll OR non-home page */
 .header__sticky.header__sticky-sticky-menu .header__area {
-  background: #fff; /* 👈 white background */
-  border-bottom: 1px solid #cca00e;
+  background: #fff;
+  /* border-bottom: 1px solid #cca00e; */
+  border-bottom: 1px solid #080808;
   position: fixed;
   top: 0;
   left: 0;
@@ -105,7 +106,8 @@
   ul
   li
   a {
-  color: #9b7231; /* dark text on white */
+  /* color: #9b7231;  */
+  color: #fdfdfd;
 }
 
 /* ------------------ RESPONSIVE ------------------ */
@@ -1634,6 +1636,7 @@ p.awardp {
   color: #b88a34;
   font-size: 24px;
 }
+
 /* ===benifitsection====== */
 
 .benefit-section-bg {
@@ -1764,7 +1767,7 @@ p.awardp {
   align-items: center;
   position: relative;
   padding: 0 10px;
-  overflow-x: auto; /* ✅ allow scrolling */
+  overflow-x: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -1773,7 +1776,7 @@ p.awardp {
   display: flex;
   flex-wrap: nowrap;
   gap: 16px;
-  width: max-content; /* ✅ ensures horizontal width is sufficient */
+  width: max-content;
   scroll-snap-type: x mandatory;
   overflow-x: auto;
 }
