@@ -2525,3 +2525,12 @@ p.awardp {
 .projectdetailspara::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+.rera-number {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  word-break: break-all;
+}
+

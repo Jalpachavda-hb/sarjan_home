@@ -251,11 +251,18 @@ const Property = () => {
         </p>
         <h3 className="para container mb-0">{descr}</h3>
 
-        <h2 className="container mb-4 mt-5 projectdetailparatitle">
+        {/* <h2 className="container mb-4 mt-5 projectdetailparatitle">
           Rera Number
         </h2>
 
-        <p className="fs-2 container mb-0 text-dark">{rera_number}</p>
+        <p className="fs-2 container mb-0 text-dark">{rera_number}</p> */}
+<h2 className="container mb-4 mt-5 projectdetailparatitle">
+  Rera Number
+</h2>
+<p className="fs-2 container mb-0 text-dark rera-number">
+  {rera_number}
+</p>
+
 
         <a
           href={brochure}
@@ -393,38 +400,40 @@ const Property = () => {
         return null;
       })()}
 
-    {(() => {
-  let specList = [];
+      {(() => {
+        let specList = [];
 
-  try {
-    if (typeof specification === "string") {
-      // Try parsing if it's a JSON string (e.g. '["Spacious rooms", "Earthquake resistant"]')
-      const parsed = JSON.parse(specification);
-      if (Array.isArray(parsed)) {
-        specList = parsed;
-      }
-    } else if (Array.isArray(specification)) {
-      specList = specification;
-    }
-  } catch (err) {
-    console.warn("Invalid specification format:", specification);
-  }
+        try {
+          if (typeof specification === "string") {
+            // Try parsing if it's a JSON string (e.g. '["Spacious rooms", "Earthquake resistant"]')
+            const parsed = JSON.parse(specification);
+            if (Array.isArray(parsed)) {
+              specList = parsed;
+            }
+          } else if (Array.isArray(specification)) {
+            specList = specification;
+          }
+        } catch (err) {
+          console.warn("Invalid specification format:", specification);
+        }
 
-  // Only render section if we have valid specifications
-  if (specList.length > 0) {
-    return (
-      <section id="speciality">
-        <span className="container section-title d-block mb-4 mt-5">
-          Speciality
-        </span>
-        <p className="para container mb-5">Premium quality construction</p>
-        <Specificationsection specificationData={specList} />
-      </section>
-    );
-  }
+        // Only render section if we have valid specifications
+        if (specList.length > 0) {
+          return (
+            <section id="speciality">
+              <span className="container section-title d-block mb-4 mt-5">
+                Speciality
+              </span>
+              <p className="para container mb-5">
+                Premium quality construction
+              </p>
+              <Specificationsection specificationData={specList} />
+            </section>
+          );
+        }
 
-  return null;
-})()}
+        return null;
+      })()}
 
       <section id="building-plans">
         <span className="container section-title d-block mb-4 mt-5">
