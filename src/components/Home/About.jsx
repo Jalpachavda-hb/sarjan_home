@@ -51,9 +51,8 @@ const AboutHome = () => {
                 style={{ border: "4px solid #1e90ff" }}
               />
             </div>
-
-            {/* Right Content */}
-            <div className="col-md-6 p-2 ml-4 ">
+          
+            <div className="col-md-6 p-2 ml-4 p-md-5"> 
               <h2 className="fw-bold title mb-3">
                 We Help You To Find Your Dream Home
               </h2>

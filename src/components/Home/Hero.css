@@ -940,14 +940,46 @@ li.menu-item-has-children {
   display: block;
 }
 
+.hero_text {
+  font-size: 40px;
+  /* line-height: 24px; */
+  font-weight: 900;
+  color: var(--primary-color);
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .hero_text {
+    font-size: 50px; /* Increase font size for mobile */
+  }
+}
+
+/* Optional: for very small phones */
+@media (max-width: 480px) {
+  .hero_text {
+    font-size: 100px; /* Even larger on tiny screens */
+  }
+}
+
 /* Right Image */
 .banner__right-image {
   max-width: 500px;
-  width: 90%;
+  width: 100% !important;
   z-index: 2;
   position: relative;
   margin: auto;
-  margin-top: 85px;
+  margin-top: 100px !important;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .banner__right-image {
+    margin-left: auto; /* push to right */
+    margin-right: 0;
+    display: block;
+    max-width: 700px; /* slightly smaller */
+    transform: translateX(20px); /* optional, shift further right */
+  }
 }
 
 /* Swiper Navigation */
@@ -982,6 +1014,13 @@ li.menu-item-has-children {
 .home__banner-button-next i:hover::before {
   color: var(--white);
   background: var(--primary-color);
+}
+/* ===================================== */
+
+@media (max-width: 767px) {
+  .banner__right-image {
+    display: none;
+  }
 }
 
 /* ========== RESPONSIVE STYLES ========== */
@@ -2220,13 +2259,6 @@ p.awardp {
     line-height: 42px;
   }
 
-  .banner__right-image {
-    width: 80%;
-    max-width: 350px;
-    position: static !important;
-    margin: 0 auto;
-  }
-
   .home__banner-button-prev,
   .home__banner-button-next {
     top: 90%;
@@ -2235,7 +2267,7 @@ p.awardp {
 }
 
 /* Mobile View (≤ 767px) */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .banner__slide-content h1 {
     font-size: 26px;
     line-height: 36px;
@@ -2483,7 +2515,12 @@ p.awardp {
     text-align: center !important;
     padding-top: 100px;
   }
+  .hero_text {
+    font-size: 35px !important;
+    margin-top: 10px !important;
 
+    text-align: center !important;
+  }
   .subtitle__one,
   .para1 {
     text-align: center;
@@ -2526,11 +2563,9 @@ p.awardp {
   background: #555;
 }
 
-
 .rera-number {
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
   word-break: break-all;
 }
-

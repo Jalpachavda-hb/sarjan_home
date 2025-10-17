@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // Base URL
-export const BASE_URL = "http://192.168.29.2:8000/api/";
+export const BASE_URL = "https://sarjanhomes.in/api/";
 
 // Loading state context - will be used by components
 let loadingManager = {

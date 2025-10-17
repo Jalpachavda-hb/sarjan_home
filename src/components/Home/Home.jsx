@@ -18,7 +18,8 @@ import Testimonial from "../Home/Testimonial";
 import { Link } from "react-router-dom";
 import { useLogo } from "../../contexts/LogoContext";
 import defaultLogo from "../../assets/img/logo-2.png";
-
+import squer from "../../assets/img/hero-slider-1.avif";
+import squer2 from "../../assets/img/hero-slider-2.avif";
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logo, loading } = useLogo();
@@ -144,11 +145,11 @@ const Home = () => {
                 className="banner__slide-area-image"
                 style={{ backgroundImage: `url(${bannerBg})` }}
               ></div>
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row align-items-center">
                   <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
                     <div className="banner__slide-content text-start">
-                      <span className="subtitle__one" data-aos="fade-right">
+                      <span className="hero_text" data-aos="fade-right">
                         Blending Comfort with Nature
                       </span>
                       <p data-aos="fade-left " className="para1">
@@ -157,19 +158,12 @@ const Home = () => {
                         comfort, convenience, and community living — all in
                         prime locations.
                       </p>
-                      {/* <a
-                        href="/about"
-                        className="btn explore-btn mt-3"
-                        data-aos="fade-up"
-                      >
-                        Explore More
-                      </a> */}
                     </div>
                   </div>
 
-                  <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
+                  <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0 pe-0">
                     <img
-                      src={require("../../assets/img/squer.png")}
+                      src={squer}
                       alt="Hexagon"
                       className="img-fluid banner__right-image"
                       data-aos="fade-up"
@@ -187,12 +181,11 @@ const Home = () => {
                 className="banner__slide-area-image"
                 style={{ backgroundImage: `url(${bannerBg2})` }}
               ></div>
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row align-items-center">
-                  {/* Left: Text */}
                   <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
                     <div className="banner__slide-content text-start">
-                      <span className="subtitle__one" data-aos="fade-right">
+                      <span className=" hero_text" data-aos="fade-right">
                         Find Your Dream Home
                       </span>
                       <p data-aos="fade-left " className="para1">
@@ -202,19 +195,12 @@ const Home = () => {
                         designed residences that blend comfort, elegance, and
                         functionality.
                       </p>
-                      {/* <a
-                        href="#about"
-                        className="btn explore-btn mt-3"
-                        data-aos="fade-up"
-                      >
-                        Explore More
-                      </a> */}
                     </div>
                   </div>
-                  {/* Right: Image */}
-                  <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
+
+                  <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0 pe-0">
                     <img
-                      src={require("../../assets/img/hero-hexagon.png")}
+                      src={squer2}
                       alt="Hexagon"
                       className="img-fluid banner__right-image"
                       data-aos="fade-up"
