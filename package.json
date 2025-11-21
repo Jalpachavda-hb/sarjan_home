@@ -3,7 +3,9 @@
   "name": "sarjan-home",
 
   "version": "0.1.0",
-"homepage": "https://dev.sarjanhomes.in/",
+
+  "homepage": "https://dev.sarjanhomes.in/",
+
   "private": true,
 
   "dependencies": {
@@ -34,6 +36,8 @@
 
     "isotope-layout": "^3.0.6",
 
+    "leaflet": "^1.9.4",
+
     "magnific-popup": "^1.2.0",
 
     "react": "^19.1.0",
@@ -45,6 +49,8 @@
     "react-icons": "^5.5.0",
 
     "react-lazy-load-image-component": "^1.6.3",
+
+    "react-leaflet": "^5.0.0",
 
     "react-router-dom": "^7.6.3",
 

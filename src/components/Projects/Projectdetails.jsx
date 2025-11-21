@@ -25,6 +25,7 @@ import Buildingplans from "./Buildingplan";
 import Documents from "./Documents";
 import Amenities from "./Amenities ";
 import LazyImage from "../common/LazyImage";
+import Gallery from "./Gallery";
 
 const Property = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -256,13 +257,12 @@ const Property = () => {
         </h2>
 
         <p className="fs-2 container mb-0 text-dark">{rera_number}</p> */}
-<h2 className="container mb-4 mt-5 projectdetailparatitle">
-  Rera Number
-</h2>
-<p className="fs-2 container mb-0 text-dark rera-number">
-  {rera_number}
-</p>
-
+        <h2 className="container mb-4 mt-5 projectdetailparatitle">
+          Rera Number
+        </h2>
+        <p className="fs-2 container mb-0 text-dark rera-number">
+          {rera_number}
+        </p>
 
         <a
           href={brochure}
@@ -280,6 +280,7 @@ const Property = () => {
       </div>
 
       {/* Gallery Section */}
+
       <section id="portfolio-details" className="portfolio-details section">
         <div className="container section-title" data-aos="fade-up"></div>
 
@@ -326,7 +327,7 @@ const Property = () => {
                       href="#amenities"
                       className="text-decoration-none text-dark"
                     >
-                      <strong>Amenities</strong>: Your Need, Our Expertise
+                      <strong>Amenities</strong>:Your Need, Our Expertise
                     </a>
                   </li>
                   <li className="mb-3">
@@ -434,7 +435,10 @@ const Property = () => {
 
         return null;
       })()}
-
+      <h2 className="container mb-4 mt-5 projectdetailparatitle">
+        From Our Gallary
+      </h2>
+      <Gallery images={galleryImages} />
       <section id="building-plans">
         <span className="container section-title d-block mb-4 mt-5">
           Building plans

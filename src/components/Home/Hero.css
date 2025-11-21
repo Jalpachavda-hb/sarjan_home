@@ -731,6 +731,25 @@ Responsive Menu Css
 /*==========================================================================
 Banner
 ========================================================================== */
+.banner__slide-area-image {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+
+  /* Prevent blur pixelation on large screens */
+  image-rendering: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .home__banner .banner__slide {
   position: relative;
@@ -964,14 +983,62 @@ li.menu-item-has-children {
 }
 
 /* Right Image */
-.banner__right-image {
+/* .banner__right-image {
   max-width: 500px;
   width: 100% !important;
   z-index: 2;
   position: relative;
   margin: auto;
   margin-top: 100px !important;
+} */
+ .banner__right-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
+/* FIX BACKGROUND IMAGE */
+.banner__slide-area-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  z-index: 1;
+}
+
+/* FIX SLIDE RIGHT IMAGE */
+.banner__right-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto; 
+  object-fit: contain;   /* ⭐ prevent distortion */
+  object-position: center;
+  display: block;
+  z-index: 2;
+  margin: auto;
+  margin-top: 100px !important;
+}
+
+/* Mobile hide right image */
+@media (max-width: 767px) {
+  .banner__right-image {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
 @media (max-width: 991px) and (min-width: 768px) {
   .banner__right-image {
     margin-left: auto; /* push to right */
@@ -2568,4 +2635,69 @@ p.awardp {
   overflow-wrap: break-word;
   white-space: normal;
   word-break: break-all;
+}
+
+
+.video-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.video-modal-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 900px; /* 🔥 Increased size */
+  background: #000;
+  border-radius: 12px;
+  padding: 20px;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.video-modal-content {
+  width: 100%;
+  height: 500px; /* 🔥 Bigger video area */
+}
+
+.video-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #fff;
+  border: none;
+  font-size: 32px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #b48e40; /* your gold color */
+  color: #fff;
 }

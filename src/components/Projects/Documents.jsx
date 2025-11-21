@@ -1,7 +1,6 @@
 import React from "react";
 import { IoIosHelpCircleOutline } from "react-icons/io";
-import commonDocImage from "../../assets/img/docimg.png"; // common image for all docs
-
+import commonDocImage from "../../assets/img/docimg.png";
 const Documents = ({ reraDocuments = [] }) => {
   const documents = reraDocuments || [];
 

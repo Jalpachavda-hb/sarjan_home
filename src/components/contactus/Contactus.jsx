@@ -12,7 +12,7 @@ import Footer from "../Home/Footer";
 import { FaMapLocation } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
-
+import { getcontactus } from "../../utils/Api_path";
 import { FaYoutube } from "react-icons/fa6";
 import contactus from "../../assets/img/bg/contact.jpg";
 import { toast, ToastContainer } from "react-toastify";
@@ -20,10 +20,24 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { useLogo } from "../../contexts/LogoContext";
 import defaultLogo from "../../assets/img/logo-2.png";
-
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import sarhjanhomemapicony  from "../../assets/img/sarhjanhomemapicony.png";
+const markerIcon = L.icon({
+  iconUrl:sarhjanhomemapicony,
+  iconSize: [100, 100],
+});
 const Contactus = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logo, loading } = useLogo();
+  const [contactData, setContactData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getcontactus();
+      setContactData(data);
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     AOS.init({
@@ -100,10 +114,31 @@ const Contactus = () => {
       name: "",
       email: "",
       phone: "",
-
       message: "",
     });
     setErrors({});
+  };
+
+  // Process contact data safely
+  const emails = contactData?.email
+    ? contactData.email.split(",").map((e) => e.trim())
+    : [];
+  const phones = contactData?.contact_number
+    ? contactData.contact_number.split(",").map((p) => p.trim())
+    : [];
+
+  const extractLatLon = (url) => {
+    if (!url) return null;
+
+    const latMatch = url.match(/mlat=([\d.-]+)/);
+    const lonMatch = url.match(/mlon=([\d.-]+)/);
+
+    if (!latMatch || !lonMatch) return null;
+
+    return {
+      lat: parseFloat(latMatch[1]),
+      lon: parseFloat(lonMatch[1]),
+    };
   };
 
   return (
@@ -239,8 +274,7 @@ const Contactus = () => {
                   <div className="contact-info-text ">
                     <h2 className="text-color">Address</h2>
                     <span>
-                      Under Pass, Nr.Vaishnodevi-Zundal, Sardar Patel Ring Rd,
-                      Khoraj, Gujarat
+                      {contactData?.address || "Address not available"}
                     </span>
                   </div>
                 </div>
@@ -258,8 +292,15 @@ const Contactus = () => {
                   </div>
                   <div className="contact-info-text">
                     <h2 className="text-color">E-mail</h2>
-                    <span>info@sarjan.com</span>
-                    <span>contact@sarjanhomes</span>
+                    {emails.length > 0 ? (
+                      emails.map((em, i) => (
+                        <span key={i} style={{ display: "block" }}>
+                          {em}
+                        </span>
+                      ))
+                    ) : (
+                      <span>Email not available</span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -275,14 +316,18 @@ const Contactus = () => {
                   <div className="contact-info-text">
                     <h2 className="text-color">YouTube</h2>
                     <span>
-                      <a
-                        href="https://www.youtube.com/watch?v=mDq5OvDkesk"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="linkedin-link"
-                      >
-                        Project Highlights
-                      </a>
+                      {contactData?.map_link ? (
+                        <a
+                          href={contactData.map_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="linkedin-link"
+                        >
+                          Project Highlights
+                        </a>
+                      ) : (
+                        "Link not available"
+                      )}
                     </span>
                   </div>
                 </div>
@@ -299,8 +344,15 @@ const Contactus = () => {
                   </div>
                   <div className="contact-info-text">
                     <h2 className="text-white">Contact Number</h2>
-                    <span>+91 9662518738</span>
-                    <span>+91 9898827988</span>
+                    {phones.length > 0 ? (
+                      phones.map((ph, i) => (
+                        <span key={i} style={{ display: "block" }}>
+                          +91 {ph}
+                        </span>
+                      ))
+                    ) : (
+                      <span>Phone not available</span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -396,7 +448,7 @@ const Contactus = () => {
             <div className="col-md-6 d-flex">
               <div className="contact-page-map w-100 h-100">
                 <img
-                  src={contactus}
+                  src={contactData?.image || contactus}
                   className="img-fluid contactimg object-fit-cover"
                   alt="Contact Us"
                 />
@@ -407,16 +459,30 @@ const Contactus = () => {
         <div className="row mt-5">
           <div className="col-12">
             <div className="contact-page-map w-100">
-              <iframe
-                title="Sarjan Homes Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0826491416944!2d72.60252127514747!3d23.021635516478155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8706b4d40e1f%3A0xeec4a24e8842e43!2sVaishnodevi%20Circle%2C%20Ahmedabad%2C%20Gujarat%20382481!5e0!3m2!1sen!2sin!4v1691248303547!5m2!1sen!2sin"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              {(() => {
+                const coords = extractLatLon(contactData?.map_link);
+                if (!coords) return <p>Location not available</p>;
+
+                return (
+                  <MapContainer
+                    center={[coords.lat, coords.lon]}
+                    zoom={17}
+                    style={{
+                      height: "400px",
+                      width: "100%",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                    <Marker
+                      position={[coords.lat, coords.lon]}
+                      icon={markerIcon}
+                    >
+                      <Popup>Sarjan Homes Location</Popup>
+                    </Marker>
+                  </MapContainer>
+                );
+              })()}
             </div>
           </div>
         </div>

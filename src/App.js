@@ -16,11 +16,11 @@ import ScrollToTop from "./components/common/ScrollToTop";
 // Component to initialize loading manager
 const LoadingInitializer = ({ children }) => {
   const loadingManager = useLoading();
-  
+
   useEffect(() => {
     setLoadingManager(loadingManager);
   }, [loadingManager]);
-  
+
   return children;
 };
 
@@ -33,7 +33,7 @@ function App() {
           updateFavicon(webSettings.favicon);
         }
       } catch (error) {
-        console.error('Failed to load favicon:', error);
+        console.error("Failed to load favicon:", error);
       }
     };
     loadFavicon();
@@ -59,7 +59,10 @@ function App() {
                 <Route path="/about" element={<Aboutpage />} />
                 <Route path="/Property" element={<Property />} />
                 <Route path="/contact" element={<Contactus />} />
-                <Route path="/Projectdetails/:id" element={<Projectdetails />} />
+                <Route
+                  path="/Projectdetails/:id"
+                  element={<Projectdetails />}
+                />
               </Routes>
             </div>
           </Router>

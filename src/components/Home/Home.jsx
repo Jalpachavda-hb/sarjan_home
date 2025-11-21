@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import AOS from "aos";
-import bannerBg from "../../assets/img/bg/bg1.webp";
+
 import bannerBg2 from "../../assets/img/bg/index-4.jpg";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -19,11 +19,15 @@ import { Link } from "react-router-dom";
 import { useLogo } from "../../contexts/LogoContext";
 import defaultLogo from "../../assets/img/logo-2.png";
 import squer from "../../assets/img/hero-slider-1.avif";
-import squer2 from "../../assets/img/hero-slider-2.avif";
+
+import { herosliders } from "../../utils/Api_path";
+import Preloader from "../preloader/Preloader";
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { logo, loading } = useLogo();
-
+  const { logo, loading: logoLoading } = useLogo();
+  const [slides, setSlides] = useState([]);
+  const [apiLoading, setApiLoading] = useState(true);
+ 
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -42,6 +46,28 @@ const Home = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    let loaded = false;
+
+    const loadData = async () => {
+      if (loaded) return;
+      loaded = true;
+
+      try {
+        const res = await herosliders();
+        setSlides(res || []);
+      } finally {
+        setApiLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (apiLoading || logoLoading) {
+    return <Preloader />;
+  }
 
   return (
     <>
@@ -138,78 +164,46 @@ const Home = () => {
           fadeEffect={{ crossFade: true }}
           speed={1200}
         >
-          {/* Slide 1 */}
-          <SwiperSlide>
-            <div className="banner__slide-area swiper-slide">
-              <div
-                className="banner__slide-area-image"
-                style={{ backgroundImage: `url(${bannerBg})` }}
-              ></div>
-              <div className="container-fluid">
-                <div className="row align-items-center">
-                  <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
-                    <div className="banner__slide-content text-start">
-                      <span className="hero_text" data-aos="fade-right">
-                        Blending Comfort with Nature
-                      </span>
-                      <p data-aos="fade-left " className="para1">
-                        At Sarjan Homes, every brick speaks of trust and
-                        excellence. Discover elegant living spaces designed for
-                        comfort, convenience, and community living — all in
-                        prime locations.
-                      </p>
-                    </div>
-                  </div>
+          {slides.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="banner__slide-area swiper-slide">
+                {/* Background image */}
+                <div
+                  className="banner__slide-area-image"
+                  style={{
+                    backgroundImage: `url(${item.background_image || bannerBg2})`,
+                  }}
+                ></div>
 
-                  <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0 pe-0">
-                    <img
-                      src={squer}
-                      alt="Hexagon"
-                      className="img-fluid banner__right-image"
-                      data-aos="fade-up"
-                    />
+                <div className="container-fluid">
+                  <div className="row align-items-center">
+                    {/* LEFT TEXT */}
+                    <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
+                      <div className="banner__slide-content text-start">
+                        <span className="hero_text" data-aos="fade-right">
+                          {item.title}
+                        </span>
+
+                        <p data-aos="fade-left" className="para1">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* RIGHT SLIDE IMAGE */}
+                    <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0 pe-0">
+                      <img
+                        src={item.slide_image || squer}
+                        alt="Hero Slide"
+                        className="img-fluid banner__right-image"
+                        data-aos="fade-up"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-
-          {/* Slide 2 */}
-          <SwiperSlide>
-            <div className="banner__slide-area swiper-slide">
-              <div
-                className="banner__slide-area-image"
-                style={{ backgroundImage: `url(${bannerBg2})` }}
-              ></div>
-              <div className="container-fluid">
-                <div className="row align-items-center">
-                  <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
-                    <div className="banner__slide-content text-start">
-                      <span className=" hero_text" data-aos="fade-right">
-                        Find Your Dream Home
-                      </span>
-                      <p data-aos="fade-left " className="para1">
-                        Welcome to Sarjan Homes — your trusted partner in
-                        turning dreams into reality. Whether you're seeking your
-                        first home or a luxurious retreat, we offer thoughtfully
-                        designed residences that blend comfort, elegance, and
-                        functionality.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0 pe-0">
-                    <img
-                      src={squer2}
-                      alt="Hexagon"
-                      className="img-fluid banner__right-image"
-                      data-aos="fade-up"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 
